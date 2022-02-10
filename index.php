@@ -59,7 +59,7 @@ INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit");
         <li class="profil-wrapper">
           <a href="#" class="profil"><i class="uil uil-user-circle"></i> </a>
           <ul class="profil-box">
-            <li><a href="login.php">login</a></li>
+            <li><a href="#">profil</a></li>
             <li><a href="logout.php">log out</a></li>
           </ul>
         </li>
