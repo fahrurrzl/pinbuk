@@ -829,6 +829,71 @@ footer {
   }
 }
 
+.detail-peminjam {
+  .detail-container {
+    background: $grey;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    .detail-wrapper {
+      .box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        .box-img {
+          padding: 0.5rem;
+          flex: 1 1 8rem;
+          border-radius: 0.5rem;
+          object-fit: cover;
+          img {
+            border-radius: 0.5rem;
+            object-fit: cover;
+            width: 100%;
+          }
+        }
+        .detail-box {
+          flex: 1 1 40rem;
+          h3 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+          }
+          p {
+            font-size: 0.9rem;
+          }
+        }
+        .setatus-box {
+          margin-top: 1rem;
+          flex: 1 1 20rem;
+          .tgl-box {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            .ket-tgl {
+              font-size: 0.95rem;
+              margin-bottom: 0.5rem;
+            }
+            .tgl {
+              font-weight: bold;
+              font-size: 1.1rem;
+            }
+          }
+          h2 {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 0.7rem;
+          }
+          .btn-kembali {
+            button {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 // mediaquery
 @media (max-width: 1200px) {
   .header {

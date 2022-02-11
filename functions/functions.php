@@ -61,4 +61,21 @@ function registrasi($data){
   
   return mysqli_affected_rows($conn);
 }
+
+// insert detail peminjaman
+function pinjam($data) {
+  global $conn;
+
+  $id_peminjam = htmlspecialchars($data['id_peminjam']);
+  $id_buku = htmlspecialchars($data['id_buku']) ;
+  
+  // tambah data
+  $query = "INSERT INTO detail_peminjam
+            VALUES
+            ('', '$id_peminjam', '$id_buku')
+            ";
+  mysqli_query($conn, $query);
+  return mysqli_affected_rows($conn);
+
+}
 ?>

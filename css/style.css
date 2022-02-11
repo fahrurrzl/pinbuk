@@ -1080,6 +1080,92 @@ footer .copyright a:hover {
   padding-right: 3.2rem;
 }
 
+.detail-peminjam .detail-container {
+  background: #5c5470;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.detail-peminjam .detail-container .detail-wrapper .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.detail-peminjam .detail-container .detail-wrapper .box .box-img {
+  padding: 0.5rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 8rem;
+          flex: 1 1 8rem;
+  border-radius: 0.5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.detail-peminjam .detail-container .detail-wrapper .box .box-img img {
+  border-radius: 0.5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}
+
+.detail-peminjam .detail-container .detail-wrapper .box .detail-box {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 40rem;
+          flex: 1 1 40rem;
+}
+
+.detail-peminjam .detail-container .detail-wrapper .box .detail-box h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.detail-peminjam .detail-container .detail-wrapper .box .detail-box p {
+  font-size: 0.9rem;
+}
+
+.detail-peminjam .detail-container .detail-wrapper .box .setatus-box {
+  margin-top: 1rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 20rem;
+          flex: 1 1 20rem;
+}
+
+.detail-peminjam .detail-container .detail-wrapper .box .setatus-box .tgl-box {
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 3rem;
+}
+
+.detail-peminjam .detail-container .detail-wrapper .box .setatus-box .tgl-box .ket-tgl {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-peminjam .detail-container .detail-wrapper .box .setatus-box .tgl-box .tgl {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.detail-peminjam .detail-container .detail-wrapper .box .setatus-box h2 {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+}
+
+.detail-peminjam .detail-container .detail-wrapper .box .setatus-box .btn-kembali button {
+  width: 100%;
+}
+
 @media (max-width: 1200px) {
   .header {
     padding: 1.5rem;

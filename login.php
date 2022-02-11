@@ -16,7 +16,7 @@ if(isset($_POST['login'])) {
     $row = mysqli_fetch_assoc($result);
     if(password_verify($password, $row['password'])){
       // set session
-      $_SESSION['login'] = true;
+      $_SESSION['login'] = $row['id_peminjam'];
       header("Location: index.php");
       exit;
     }
