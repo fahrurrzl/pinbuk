@@ -78,4 +78,13 @@ function pinjam($data) {
   return mysqli_affected_rows($conn);
 
 }
+
+// selisih tanggal
+function selisih($tgl_sekarang,$tgl_kembali) {
+  $tgl_kembali = strtotime($tgl_kembali);
+  $tgl_sekarang = strtotime($tgl_sekarang);
+  $selisih = $tgl_sekarang - $tgl_kembali;
+  $selisih = $selisih / (60 * 60 * 24);
+  return $selisih;
+}
 ?>

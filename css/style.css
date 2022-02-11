@@ -1084,6 +1084,7 @@ footer .copyright a:hover {
   background: #5c5470;
   padding: 1rem;
   border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .detail-peminjam .detail-container .detail-wrapper .box {
