@@ -180,6 +180,8 @@ if(isset($_POST['registrasi'])) {
               <div class="btn-eye-conf"><i class="uil uil-eye-slash"></i></div>
             </div>
 
+            <input type="hidden" name="level" value="peminjam">
+
             <input name="registrasi" class="btn" type="submit" value="sign up" />
           </form>
         </div>

@@ -1021,6 +1021,65 @@ footer .copyright a:hover {
   color: #a4a1ac;
 }
 
+.detail-profil .detail-profil-container .detail-profil-wrapper {
+  border: 2px solid #dbd8e3;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-left {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 15rem;
+          flex: 1 1 15rem;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-left .detail-profil-img {
+  width: 100%;
+  border-radius: 0.5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow: hidden;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-left .detail-profil-img img {
+  width: 25rem;
+  height: 25rem;
+  border-radius: 0.5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 30rem;
+          flex: 1 1 30rem;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table {
+  margin-bottom: 2rem;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table tr td {
+  font-size: 1rem;
+  color: #a4a1ac;
+  padding-top: 1rem;
+  padding-right: 1.5rem;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table tr .kontak {
+  padding-right: 3.2rem;
+}
+
 @media (max-width: 1200px) {
   .header {
     padding: 1.5rem;

@@ -779,6 +779,56 @@ footer {
   }
 }
 
+.detail-profil {
+  .detail-profil-container {
+    .detail-profil-wrapper {
+      border: $border;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      .detail-profil-left {
+        flex: 1 1 15rem;
+        .detail-profil-img {
+          width: 100%;
+          border-radius: 0.5rem;
+          object-fit: cover;
+          overflow: hidden;
+          img {
+            width: 25rem;
+            height: 25rem;
+            border-radius: 0.5rem;
+            object-fit: cover;
+          }
+        }
+      }
+      .detail-profil-right {
+        flex: 1 1 30rem;
+        .content {
+          h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+          }
+          table {
+            margin-bottom: 2rem;
+            tr {
+              td {
+                font-size: 1rem;
+                color: $darkWhite;
+                padding-top: 1rem;
+                padding-right: 1.5rem;
+              }
+              .kontak {
+                padding-right: 3.2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 // mediaquery
 @media (max-width: 1200px) {
   .header {

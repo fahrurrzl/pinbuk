@@ -27,6 +27,7 @@ function registrasi($data){
   $username = strtolower(stripslashes($data['username']));
   $password = mysqli_real_escape_string($conn, $data['password']);
   $password_konfirmasi = mysqli_real_escape_string($conn, $data['password_konfirmasi']);
+  $level = htmlspecialchars($data['level']);
 
   // ubah format tanggal
   $tl = $data['tl'];
@@ -54,7 +55,7 @@ function registrasi($data){
   // tambahkan user baru
   $query = "INSERT INTO peminjam
             VALUES
-            ('', '$nama_peminjam', '$tempat_lahir', '$tl', '$jk', '$tlp', '$alamat', '$username', '$password')
+            ('', '$nama_peminjam', '$tempat_lahir', '$tl', '$jk', '$tlp', '$alamat', '$username', '$password', '$level')
             ";
   mysqli_query($conn, $query);
   
