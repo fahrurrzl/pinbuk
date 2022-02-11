@@ -74,6 +74,7 @@ $row = mysqli_fetch_assoc($peminjam);
         <a href="?page=home">home</a>
         <a href="?page=home#books">books</a>
         <a href="?page=home#about">about</a>
+        <a href="?page=buku-saya">buku saya</a>
       </nav>
 
       <div class="btn-menu">
@@ -108,7 +109,11 @@ $row = mysqli_fetch_assoc($peminjam);
             }
           } elseif($page == 'detail-profil') {
             include 'page/detail-profil.php';
-          } 
+          } elseif($page == 'buku-saya'){
+            include 'page/detail_peminjam.php';
+          } else {
+            include 'page/home.php';
+          }
         } else {
           include 'page/home.php';
         }
@@ -120,9 +125,10 @@ $row = mysqli_fetch_assoc($peminjam);
       <div class="box-container">
         <div class="box">
           <h3>quick link</h3>
-          <a href="#home">home</a>
-          <a href="#books">books</a>
-          <a href="#about">about</a>
+          <a href="#home">beranda</a>
+          <a href="#books">buku</a>
+          <a href="#about">tentang</a>
+          <a href="#buku-saya">buku saya</a>
         </div>
 
         <div class="box">
