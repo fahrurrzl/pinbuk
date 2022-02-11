@@ -87,6 +87,16 @@ function pinjam($data) {
           </script>";
     return false;
   }
+
+  // cek jumlah buku
+  $cek_jumlah = mysqli_query($conn, "SELECT jumlah FROM buku WHERE id_buku = '$id_buku'");
+  $jumlah_buku = mysqli_fetch_assoc($cek_jumlah);
+  if($jumlah_buku['jumlah'] == 0) {
+    echo "<script>
+            alert('stok buku habis');
+          </script>";
+    return false;
+  }
   
   // tambah data
   $query = "INSERT INTO detail_peminjam
@@ -94,6 +104,12 @@ function pinjam($data) {
             ('', '$id_peminjam', '$id_buku', '$tgl_pinjam', '$tgl_kembali', '$status')
             ";
   mysqli_query($conn, $query);
+
+  // update jumlah buku
+  $jumlah_buku = $jumlah_buku['jumlah'] - 1;
+  $sql = "UPDATE buku SET jumlah = '$jumlah_buku' WHERE id_buku = '$id_buku'";
+  mysqli_query($conn, $sql);
+
   return mysqli_affected_rows($conn);
 
 }
@@ -112,10 +128,18 @@ function kembali($data){
   global $conn;
 
   $id_detail = $data['id_detail'];
+  $id_buku = $data['id_buku'];
   $status = $data['status'];
 
   $query = "UPDATE detail_peminjam SET status = '$status' WHERE id_detail = '$id_detail'";
   mysqli_query($conn, $query);
+
+  // update jumlah buku
+  $jumlah_buku = mysqli_query($conn, "SELECT jumlah FROM buku WHERE id_buku = '$id_buku'");
+  $jumlah_buku = mysqli_fetch_assoc($jumlah_buku);
+  $jumlah_buku = $jumlah_buku['jumlah'] + 1;
+  $sql = "UPDATE buku SET jumlah = '$jumlah_buku' WHERE id_buku = '$id_buku'";
+  mysqli_query($conn, $sql);
 
   return mysqli_affected_rows($conn);
 }

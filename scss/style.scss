@@ -7,17 +7,23 @@
 // $white: #dbd8e3;
 // $darkWhite: #a4a1ac;
 
-$black: #343434;
-$lightBlack: #1e6f5c;
-$grey: #29bb89;
-$white: #f6ed46;
-$darkWhite: #fff;
-
-// $black: #1b2361;
-// $lightBlack: #2f3a8f;
-// $grey: #fe7e6d;
-// $white: #feece9;
+// $black: #343434;
+// $lightBlack: #1e6f5c;
+// $grey: #29bb89;
+// $white: #f6ed46;
 // $darkWhite: #fff;
+
+// $black: #090909;
+// $lightBlack: #7a7a7a;
+// $grey: #7e7390;
+// $white: #f7f5fa;
+// $darkWhite: #988eac;
+
+$black: #2c2b30;
+$lightBlack: #7d7b75;
+$grey: #4f4f51;
+$white: #d6d6d6;
+$darkWhite: #a3a09d;
 
 // border
 $border: 2px solid $white;
@@ -368,7 +374,7 @@ section {
 }
 
 .books {
-  background: $lightBlack;
+  background: $black;
   .box {
     padding: 0.5rem;
     background: $white;
@@ -455,7 +461,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  background: $lightBlack;
+  background: $black;
   .content {
     flex: 1 1 35rem;
     h3 {
@@ -522,7 +528,8 @@ footer {
     text-align: center;
     padding: 2rem;
     margin-top: 2rem;
-    background: $lightBlack;
+    background: $black;
+    border-top: $border;
     a {
       color: $darkWhite;
       &:hover {

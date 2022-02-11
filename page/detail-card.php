@@ -5,21 +5,16 @@ INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
 INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit
 WHERE id_buku = $id_buku")[0];
 
-// menampilkan semua buku
-$buku = query("SELECT * FROM buku
-INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
-INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit");
-
 $tgl_pinjam = date('d-m-Y');
 $tujuh_hari = date('d-m-Y', strtotime('+7 days'));
 $kembali = date('d-m-Y', strtotime('+14 days'));
 // ketika tombol pinjam di klik
 if(isset($_POST['pinjam'])) {
   if(pinjam($_POST) > 0) {
-    echo "<script>
-    alert('Buku berhasil dipinjam');
-    document.location.href = '?page=buku-saya';
-    </script>";
+      echo "<script>
+      alert('Buku berhasil dipinjam');
+      document.location.href = '?page=buku-saya';
+      </script>";
   } else {
     echo "<script>
     alert('Buku gagal dipinjam');
@@ -45,8 +40,7 @@ if(isset($_POST['pinjam'])) {
               <p>tahun terbit : <?= $detailBuku['tahun_terbit']; ?></p>
               <p>ISBN : <?= $detailBuku['isbn']; ?></p>
               <p>sinopsis : <br>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, aperiam at nisi enim et nemo asperiores beatae, ipsa id nam mollitia, eos officiis error consequatur. Esse quisquam placeat rerum ea!
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum, molestias vero, quod ab magnam repellendus accusamus tenetur architecto, iste ut temporibus accusantium adipisci sunt provident distinctio non pariatur quibusdam itaque?
+                <?= $detailBuku['sinopsis'] ?>
               </p>
             </div>
             <div class="detail-pinjam">
@@ -58,6 +52,10 @@ if(isset($_POST['pinjam'])) {
                 <div class="tgl-kembali">
                   <p>tanggal kembali</p>
                   <p><span><?= $tujuh_hari ?></span></p>
+                </div>
+                <div class="jumlah">
+                  <p>jumlah</p>
+                  <p><span><?= $detailBuku['jumlah']; ?></span></p>
                 </div>
               </div>
               <input type="hidden" name="id_peminjam" value="<?= $_SESSION['login']; ?>">

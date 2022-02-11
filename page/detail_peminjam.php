@@ -67,6 +67,7 @@ if(isset($_POST['kembali'])){
               <form action="" method="POST">
                 <input type="hidden" name="id_detail" value="<?= $dp['id_detail']; ?>">
                 <input type="hidden" name="status" value="kembali">
+                <input type="hidden" name="id_buku" value="<?= $dp['id_buku']; ?>">
                 <div class="btn-kembali">
                   <button name="kembali" class="btn">kembali</button>
                 </div>
