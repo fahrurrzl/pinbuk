@@ -1,11 +1,4 @@
 <?php 
-session_start();
-
-if( !isset($_SESSION['login']) ) {
-  header("Location: login.php");
-  exit;
-}
-
 require 'functions/functions.php';
 
 // buku teratas
@@ -41,12 +34,12 @@ INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit");
   <body>
     <!-- header start -->
     <header class="header">
-      <a href="#home" class="logo"><i class="uil uil-book-open"></i></a>
+      <a href="" class="logo"><i class="uil uil-book-open"></i></a>
 
       <nav class="navbar">
-        <a href="#home">home</a>
-        <a href="#books">books</a>
-        <a href="#about">about</a>
+        <a href="?page=home">home</a>
+        <a href="?page=home#books">books</a>
+        <a href="?page=home#about">about</a>
       </nav>
 
       <div class="btn-menu">
@@ -59,111 +52,47 @@ INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit");
         <li class="profil-wrapper">
           <a href="#" class="profil"><i class="uil uil-user-circle"></i> </a>
           <ul class="profil-box">
-            <li><a href="#">profil</a></li>
-            <li><a href="logout.php">log out</a></li>
+            <li><a href="?page=detail-profil">profil</a></li>
+            <li><a href="?page=logout">log out</a></li>
           </ul>
         </li>
       </ul>
     </header>
     <!-- header end -->
+      <?php 
+        @$page = $_GET['page'];
+        @$aksi = $_GET['aksi'];
 
-    <!-- home start -->
-    <section class="home" id="home">
-      <div class="content">
-        <h3>find your favorite <span class="line-down">books</span></h3>
-        <p class="p-home">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim accusamus iure saepe non eos maiores hic illo est sed nesciunt!</p>
-        <a href="" class="btn">get started</a>
-      </div>
+        if(!empty($page)) {
+          if($page == 'home') {
+            if ($aksi == 'detail') {
+              include 'page/detail-card.php';
+            } else {
+              include 'page/home.php';
+            }
+          } elseif($page == 'detail-profil') {
+            include 'page/detail-profil.php';
+          } else if($page == 'logout') {
+            include 'page/logout.php';
+          }
+        } else {
+          include 'page/home.php';
+        }
 
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-        <?php foreach($buku_terbatu as $b) : ?>
-          <div class="swiper-slide">
-            <div class="card-home">
-              <div class="img">
-                <img src="img/dasar.jpg" alt="Buku" />
-              </div>
-              <div class="content">
-                <h3 class="title"><?= $b['judul']; ?></h3>
-                <p>pengarang : <?= $b['nama_pengarang']; ?></p>
-                <p>penerbit : <?= $b['nama_penerbit']; ?></p>
-                <div class="btnContainer">
-                  <a class="btn-card" href='detail-card.php?id_buku=<?= $b['id_buku']; ?>'><i class="uil uil-message"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <?php endforeach; ?>
-        </div>
-      </div>
-    </section>
-    <!-- home end -->
-
-    <!-- books start -->
-    <section class="books" id="books">
-      <div class="heading">
-        <span>Books</span>
-      </div>
-      <!-- slider -->
-      <div class="slider">
-        <?php foreach($buku as $sb) : ?>
-        <div>
-          <!-- box slider -->
-          <div class="box">
-            <div class="slide-img">
-              <img src="img/dasar.jpg" alt="Books" />
-            </div>
-            <!-- detail box -->
-            <div class="detail-box">
-              <!-- type -->
-              <div class="type">
-                <h3><?= $sb['judul']; ?></h3>
-                <p>pengarang : <?= $sb['nama_pengarang']; ?></p>
-                <p>pengarang : <?= $sb['nama_penerbit']; ?></p>
-              </div>
-              <!-- pinjam -->
-              <div class="btnCard">
-              <a class="btn-card" href='detail-card.php?id_buku=<?= $sb['id_buku']; ?>'><i class="uil uil-message"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <?php endforeach; ?>
-      </div>
-    </section>
-    <!-- books end -->
-
-    <!-- about start -->
-    <section class="about" id="about">
-      <div class="heading">
-        <span>about</span>
-      </div>
-      <div class="content-container">
-        <div class="img">
-          <img src="img/about.png" alt="" />
-        </div>
-        <div class="content">
-          <h3>Why Should You Read <span class="lower-font">a</span> <span class="line-down">Books?</span></h3>
-          <p class="p-home">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim accusamus iure saepe non eos maiores hic illo est sed nesciunt!</p>
-          <a href="" class="btn">get started</a>
-        </div>
-      </div>
-    </section>
-    <!-- about end -->
-
-    <!-- cta start -->
-    <section class="cta" id="cta">
-      <div class="content">
-        <h3><span class="line-down">sign up</span> <span class="lower-font">and</span> get started to reading</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, enim?</p>
-        <a href="" class="btn">registrasi</a>
-        <p class="alredy">alredy have an account? <a href="login.html">login</a></p>
-      </div>
-      <div class="img">
-        <img src="img/cta.png" alt="cta" />
-      </div>
-    </section>
-    <!-- cta end -->
+        // if(!empty($page)) {
+        //   switch ($page) {
+        //     case 'home':
+        //       include 'page/home.php';
+        //       break;
+        //       default:
+        //         include 'page/home.php';
+        //         break;
+        //   }
+        // } else {
+        //   include 'page/home.php';
+        // }
+      
+      ?>
 
     <!-- footer start -->
     <footer>
