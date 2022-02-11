@@ -1,4 +1,11 @@
 <?php 
+session_start();
+
+if( !isset($_SESSION['login']) ) {
+  header("Location: login.php");
+  exit;
+}
+
 require 'functions/functions.php';
 
 // buku teratas
@@ -67,13 +74,15 @@ INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit");
           if($page == 'home') {
             if ($aksi == 'detail') {
               include 'page/detail-card.php';
-            } else {
-              include 'page/home.php';
+            } 
+            else {
+              require 'page/home.php';
             }
           } elseif($page == 'detail-profil') {
             include 'page/detail-profil.php';
           } else if($page == 'logout') {
-            include 'page/logout.php';
+            include 'logout.php';
+            header("Location: login.php");
           }
         } else {
           include 'page/home.php';

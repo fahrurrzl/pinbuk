@@ -1,5 +1,9 @@
 <?php 
-
+session_start();
+require 'functions/functions.php';
+if(isset($_SESSION['login'])) {
+  header("Location: index.php");
+}
 
 if(isset($_POST['login'])) {
   $username = $_POST['username'];
