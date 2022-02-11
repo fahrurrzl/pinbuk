@@ -842,6 +842,17 @@ footer {
 }
 
 .detail-peminjam {
+  .detail-pinjam-kosong {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      font-size: 3rem;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
   .detail-container {
     background: $grey;
     padding: 1rem;

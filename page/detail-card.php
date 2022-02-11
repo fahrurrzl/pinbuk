@@ -66,7 +66,6 @@ if(isset($_POST['pinjam'])) {
               <input type="hidden" name="tgl_kembali" value="<?= $tujuh_hari; ?>">
               <input type="hidden" name="status" value="pinjam">
               <button name="pinjam" class="btn">pinjam</button>
-              <!-- <a href="?page=home&aksi=pinjam" class="btn" style="text-align: center;">Pinjam</a> -->
             </div>
           </div>
         </div>

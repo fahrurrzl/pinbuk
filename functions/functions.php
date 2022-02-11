@@ -78,6 +78,15 @@ function pinjam($data) {
 
   $tgl_kembali = $data['tgl_kembali'];
   $tgl_kembali = date('Y-m-d', strtotime($tgl_kembali));
+
+  // cek apakah buku sudah dipinjam
+  $cek_buku = mysqli_query($conn, "SELECT id_buku FROM detail_peminjam WHERE id_buku = '$id_buku' AND id_peminjam = '$id_peminjam' AND status = 'pinjam'");
+  if(mysqli_fetch_assoc($cek_buku)) {
+    echo "<script>
+            alert('Buku sudah dipinjam');
+          </script>";
+    return false;
+  }
   
   // tambah data
   $query = "INSERT INTO detail_peminjam
@@ -96,5 +105,18 @@ function selisih($tgl_sekarang,$tgl_kembali) {
   $selisih = $tgl_sekarang - $tgl_kembali;
   $selisih = $selisih / (60 * 60 * 24);
   return $selisih;
+}
+
+// kembali buku
+function kembali($data){
+  global $conn;
+
+  $id_detail = $data['id_detail'];
+  $status = $data['status'];
+
+  $query = "UPDATE detail_peminjam SET status = '$status' WHERE id_detail = '$id_detail'";
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn);
 }
 ?>

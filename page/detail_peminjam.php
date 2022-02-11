@@ -1,7 +1,31 @@
+<?php 
 
+if(isset($_POST['kembali'])){
+  if(kembali($_POST) > 0){
+    echo "<script>
+    alert('Berhasil mengembalikan buku');
+    document.location.href = '?page=buku-saya';
+    </script>";
+  } else {
+    echo "<script>
+    alert('Gagal mengembalikan buku');
+    document.location.href = '?page=buku-saya';
+    </script>";
+  }
+}
+
+?>
     <!-- detail peminjam start -->
     <section class="detail-peminjam" id="detail-peminjam">
-      <?php foreach($detailPeminjam as $dp) : ?>
+      <?php 
+      // jika data detail kosong
+      if(empty($detailPinjam)) {
+        echo "<div class='detail-pinjam-kosong'>
+        <h2>Anda belum meminjam buku</h2>
+        </div>";
+      } else {
+        foreach($detailPinjam as $dp) :
+      ?>
       <div class="detail-container">
         <div class="detail-wrapper">
           <div class="box">
@@ -37,16 +61,20 @@
                   $denda = $lambat * $denda;
                   echo "terlambat $lambat hari denda Rp. $denda";
                 }
-              
               ?>
               </h3>
-              <div class="btn-kembali">
-                <button class="btn">kembali</button>
-              </div>
+
+              <form action="" method="POST">
+                <input type="hidden" name="id_detail" value="<?= $dp['id_detail']; ?>">
+                <input type="hidden" name="status" value="kembali">
+                <div class="btn-kembali">
+                  <button name="kembali" class="btn">kembali</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
-      <?php endforeach; ?>
+      <?php endforeach; } ?>
     </section>
     <!-- detail peminjam end -->

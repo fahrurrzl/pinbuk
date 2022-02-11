@@ -1080,6 +1080,25 @@ footer .copyright a:hover {
   padding-right: 3.2rem;
 }
 
+.detail-peminjam .detail-pinjam-kosong {
+  min-height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.detail-peminjam .detail-pinjam-kosong h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
 .detail-peminjam .detail-container {
   background: #29bb89;
   padding: 1rem;

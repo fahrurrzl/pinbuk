@@ -24,7 +24,7 @@ INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
 INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit");
 
 // menampilkan data detail peminjam
-$detailPeminjam = $detailPinjam = query("SELECT * FROM detail_peminjam
+@$detailPinjam = query("SELECT * FROM detail_peminjam
 INNER JOIN buku ON detail_peminjam.id_buku = buku.id_buku
 INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
 INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit
