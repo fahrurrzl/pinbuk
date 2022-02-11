@@ -28,7 +28,7 @@ $detailPeminjam = $detailPinjam = query("SELECT * FROM detail_peminjam
 INNER JOIN buku ON detail_peminjam.id_buku = buku.id_buku
 INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
 INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit
-WHERE id_peminjam = $id_peminjam AND status = 'pinjam'");
+WHERE id_peminjam = $id_peminjam AND status = 'pinjam' ORDER BY tgl_kembali ASC");
 
 // menampilkan data peminjam
 $peminjam = mysqli_query($conn, "SELECT * FROM peminjam WHERE id_peminjam = '$id_peminjam'");
