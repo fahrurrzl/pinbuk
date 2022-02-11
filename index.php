@@ -60,12 +60,14 @@ INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit");
           <a href="#" class="profil"><i class="uil uil-user-circle"></i> </a>
           <ul class="profil-box">
             <li><a href="?page=detail-profil">profil</a></li>
-            <li><a href="?page=logout">log out</a></li>
+            <li><a href="logout.php">log out</a></li>
           </ul>
         </li>
       </ul>
     </header>
     <!-- header end -->
+
+
       <?php 
         @$page = $_GET['page'];
         @$aksi = $_GET['aksi'];
@@ -74,16 +76,12 @@ INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit");
           if($page == 'home') {
             if ($aksi == 'detail') {
               include 'page/detail-card.php';
-            } 
-            else {
-              require 'page/home.php';
+            } else {
+              include 'page/home.php';
             }
           } elseif($page == 'detail-profil') {
             include 'page/detail-profil.php';
-          } else if($page == 'logout') {
-            include 'logout.php';
-            header("Location: login.php");
-          }
+          } 
         } else {
           include 'page/home.php';
         }
