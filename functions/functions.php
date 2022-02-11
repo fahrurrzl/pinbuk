@@ -67,12 +67,22 @@ function pinjam($data) {
   global $conn;
 
   $id_peminjam = htmlspecialchars($data['id_peminjam']);
-  $id_buku = htmlspecialchars($data['id_buku']) ;
+  $id_buku = htmlspecialchars($data['id_buku']);
+  $tgl_pinjam = htmlspecialchars($data['tgl_pinjam']);
+  $tgl_kembali = htmlspecialchars($data['tgl_kembali']);
+  $status = htmlspecialchars($data['status']);
+
+  // ubah format tanggal
+  $tgl_pinjam = $data['tgl_pinjam'];
+  $tgl_pinjam = date('Y-m-d', strtotime($tgl_pinjam));
+
+  $tgl_kembali = $data['tgl_kembali'];
+  $tgl_kembali = date('Y-m-d', strtotime($tgl_kembali));
   
   // tambah data
   $query = "INSERT INTO detail_peminjam
             VALUES
-            ('', '$id_peminjam', '$id_buku')
+            ('', '$id_peminjam', '$id_buku', '$tgl_pinjam', '$tgl_kembali', '$status')
             ";
   mysqli_query($conn, $query);
   return mysqli_affected_rows($conn);
