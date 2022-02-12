@@ -50,6 +50,10 @@ $border: 2px solid $white;
   color: $white;
 }
 
+p {
+  line-height: 150%;
+}
+
 // animation
 @keyframes widthUnderline {
   0% {
@@ -135,14 +139,14 @@ $border: 2px solid $white;
 
 // line down
 .line-down {
-  font-size: 5rem;
+  font-size: 2.875rem;
   color: $white;
   font-weight: bold;
   position: relative;
   &::after {
     content: "";
     position: absolute;
-    bottom: 1rem;
+    bottom: 0.5rem;
     left: 0;
     right: 0;
     width: 100%;
@@ -156,7 +160,7 @@ $border: 2px solid $white;
 
 .lower-font {
   text-transform: lowercase;
-  font-size: 5rem;
+  font-size: 2.875rem;
   color: $darkWhite;
 }
 
@@ -279,17 +283,15 @@ section {
   .content {
     width: 50%;
     h3 {
-      font-size: 5rem;
+      font-size: 2.875rem;
       font-weight: bold;
       color: $darkWhite;
     }
-
     .p-home {
-      line-height: 1.5rem;
+      line-height: 150%;
       padding-bottom: 2rem;
     }
   }
-
   .swiper {
     width: 22rem;
     .card-home {
@@ -431,7 +433,6 @@ section {
 
 .about {
   height: 100vh;
-
   .content-container {
     display: flex;
     flex-wrap: wrap;
@@ -446,7 +447,7 @@ section {
     .content {
       flex: 1 1 35rem;
       h3 {
-        font-size: 5rem;
+        font-size: 2.875rem;
         color: $darkWhite;
       }
       p {
@@ -465,25 +466,25 @@ section {
   .content {
     flex: 1 1 35rem;
     h3 {
-      font-size: 3.5rem;
+      font-size: 2.875rem;
       z-index: 2;
       color: $darkWhite;
       .line-down {
         z-index: 1;
       }
       .lower-font {
-        font-size: 3.5rem;
+        font-size: 2.875rem;
       }
     }
     p {
       margin: 1rem 0;
     }
     .alredy {
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       margin-top: 0.5rem;
       a {
         display: inline-block;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
         &:hover {
           color: $darkWhite;
           font-style: italic;
@@ -541,7 +542,6 @@ footer {
 
 .login {
   min-height: 130vh;
-  background: $lightBlack;
   display: flex;
   align-items: center;
   justify-content: center;

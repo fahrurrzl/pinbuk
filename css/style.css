@@ -16,6 +16,10 @@
   color: #d6d6d6;
 }
 
+p {
+  line-height: 150%;
+}
+
 @-webkit-keyframes widthUnderline {
   0% {
     width: 0;
@@ -124,7 +128,7 @@
 }
 
 .line-down {
-  font-size: 5rem;
+  font-size: 2.875rem;
   color: #d6d6d6;
   font-weight: bold;
   position: relative;
@@ -133,7 +137,7 @@
 .line-down::after {
   content: "";
   position: absolute;
-  bottom: 1rem;
+  bottom: 0.5rem;
   left: 0;
   right: 0;
   width: 100%;
@@ -147,7 +151,7 @@
 
 .lower-font {
   text-transform: lowercase;
-  font-size: 5rem;
+  font-size: 2.875rem;
   color: #a3a09d;
 }
 
@@ -304,13 +308,13 @@ section {
 }
 
 .home .content h3 {
-  font-size: 5rem;
+  font-size: 2.875rem;
   font-weight: bold;
   color: #a3a09d;
 }
 
 .home .content .p-home {
-  line-height: 1.5rem;
+  line-height: 150%;
   padding-bottom: 2rem;
 }
 
@@ -528,7 +532,7 @@ section {
 }
 
 .about .content-container .content h3 {
-  font-size: 5rem;
+  font-size: 2.875rem;
   color: #a3a09d;
 }
 
@@ -556,7 +560,7 @@ section {
 }
 
 .cta .content h3 {
-  font-size: 3.5rem;
+  font-size: 2.875rem;
   z-index: 2;
   color: #a3a09d;
 }
@@ -566,7 +570,7 @@ section {
 }
 
 .cta .content h3 .lower-font {
-  font-size: 3.5rem;
+  font-size: 2.875rem;
 }
 
 .cta .content p {
@@ -574,13 +578,13 @@ section {
 }
 
 .cta .content .alredy {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   margin-top: 0.5rem;
 }
 
 .cta .content .alredy a {
   display: inline-block;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 
 .cta .content .alredy a:hover {
@@ -648,7 +652,6 @@ footer .copyright a:hover {
 
 .login {
   min-height: 130vh;
-  background: #7d7b75;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

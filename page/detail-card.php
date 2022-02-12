@@ -10,18 +10,26 @@ $tujuh_hari = date('d-m-Y', strtotime('+7 days'));
 $kembali = date('d-m-Y', strtotime('+14 days'));
 // ketika tombol pinjam di klik
 if(isset($_POST['pinjam'])) {
-  if(pinjam($_POST) > 0) {
+    if(isset($_SESSION['login'])) {
+    if(pinjam($_POST) > 0) {
+        echo "<script>
+        alert('Buku berhasil dipinjam');
+        document.location.href = '?page=buku-saya';
+        </script>";
+    } else {
       echo "<script>
-      alert('Buku berhasil dipinjam');
-      document.location.href = '?page=buku-saya';
+      alert('Buku gagal dipinjam');
+      document.location.href = '';
       </script>";
+    }
   } else {
     echo "<script>
-    alert('Buku gagal dipinjam');
-    document.location.href = '';
-    </script>";
+            alert('Anda harus login terlebih dahulu');
+            document.location.href = 'login.php';
+          </script>
+    ";
   }
-}
+  }
 
 
 ?>
@@ -58,7 +66,7 @@ if(isset($_POST['pinjam'])) {
                   <p><span><?= $detailBuku['jumlah']; ?></span></p>
                 </div>
               </div>
-              <input type="hidden" name="id_peminjam" value="<?= $_SESSION['login']; ?>">
+              <input type="hidden" name="id_peminjam" value="<?= @$_SESSION['login']; ?>">
               <input type="hidden" name="id_buku" value="<?= $id_buku; ?>">
               <input type="hidden" name="tgl_pinjam" value="<?= $tgl_pinjam; ?>">
               <input type="hidden" name="tgl_kembali" value="<?= $tujuh_hari; ?>">

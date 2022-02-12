@@ -57,10 +57,12 @@ if(isset($_POST['registrasi'])) {
   <body>
     <!-- header start -->
     <header class="header">
-      <a href="index.html" class="logo"><i class="uil uil-book-open"></i></a>
+      <a href="index.php" class="logo"><i class="uil uil-book-open"></i></a>
 
       <nav class="navbar">
         <a href="index.php">home</a>
+        <a href="index.php?page=home#books">books</a>
+        <a href="index.php?page=home#about">about</a>
       </nav>
 
       <div class="btn-menu">
@@ -68,16 +70,6 @@ if(isset($_POST['registrasi'])) {
         <span class="centerSpan"></span>
         <span class="bottomSpan"></span>
       </div>
-
-      <ul class="profil-container">
-        <li class="profil-wrapper">
-          <a href="#" class="profil"><i class="uil uil-user-circle"></i> </a>
-          <ul class="profil-box">
-            <li><a href="login.html">login</a></li>
-            <li><a href="">log out</a></li>
-          </ul>
-        </li>
-      </ul>
     </header>
     <!-- header end -->
 

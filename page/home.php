@@ -88,8 +88,8 @@
       <div class="content">
         <h3><span class="line-down">sign up</span> <span class="lower-font">and</span> get started to reading</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, enim?</p>
-        <a href="" class="btn">registrasi</a>
-        <p class="alredy">alredy have an account? <a href="login.html">login</a></p>
+        <a href="login.php" class="btn">registrasi</a>
+        <p class="alredy">alredy have an account? <a href="login.php">login</a></p>
       </div>
       <div class="img">
         <img src="img/cta.png" alt="cta" />

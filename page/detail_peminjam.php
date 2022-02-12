@@ -1,4 +1,18 @@
 <?php 
+if(isset($_SESSION['login'])) {
+  $id_peminjam = $_SESSION['login'];
+}
+
+// menampilkan data detail peminjam
+@$detailPinjam = query("SELECT * FROM detail_peminjam
+INNER JOIN buku ON detail_peminjam.id_buku = buku.id_buku
+INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
+INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit
+WHERE id_peminjam = $id_peminjam AND status = 'pinjam' ORDER BY tgl_kembali ASC");
+
+// menampilkan data peminjam
+$peminjam = mysqli_query($conn, "SELECT * FROM peminjam WHERE id_peminjam = '$id_peminjam'");
+$row = mysqli_fetch_assoc($peminjam);
 
 if(isset($_POST['kembali'])){
   if(kembali($_POST) > 0){

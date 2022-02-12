@@ -1,11 +1,6 @@
 <?php 
 session_start();
 
-if( !isset($_SESSION['login']) ) {
-  header("Location: login.php");
-  exit;
-}
-
 if(isset($_SESSION['login'])) {
   $id_peminjam = $_SESSION['login'];
 }
@@ -23,17 +18,16 @@ $buku = query("SELECT * FROM buku
 INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
 INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit");
 
-// menampilkan data detail peminjam
+// // menampilkan data detail peminjam
 @$detailPinjam = query("SELECT * FROM detail_peminjam
 INNER JOIN buku ON detail_peminjam.id_buku = buku.id_buku
 INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
 INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit
 WHERE id_peminjam = $id_peminjam AND status = 'pinjam' ORDER BY tgl_kembali ASC");
 
-// menampilkan data peminjam
-$peminjam = mysqli_query($conn, "SELECT * FROM peminjam WHERE id_peminjam = '$id_peminjam'");
+// // menampilkan data peminjam
+@$peminjam = mysqli_query($conn, "SELECT * FROM peminjam WHERE id_peminjam = '$id_peminjam'");
 $row = mysqli_fetch_assoc($peminjam);
-
 
 ?>
 
@@ -81,7 +75,9 @@ $row = mysqli_fetch_assoc($peminjam);
         <a href="?page=home">home</a>
         <a href="?page=home#books">books</a>
         <a href="?page=home#about">about</a>
-        <a href="?page=buku-saya">buku saya</a>
+        <?php if(isset($_SESSION['login'])) : ?>
+        <a href="?page=buku-saya">dipinjam</a>
+        <?php endif; ?>
       </nav>
 
       <div class="btn-menu">
@@ -94,8 +90,12 @@ $row = mysqli_fetch_assoc($peminjam);
         <li class="profil-wrapper">
           <a href="#" class="profil"><i class="uil uil-user-circle"></i> </a>
           <ul class="profil-box">
+            <?php if(isset($_SESSION['login'])) { ?>
             <li><a href="?page=detail-profil">profil</a></li>
             <li><a href="logout.php">log out</a></li>
+            <?php } else {
+              echo "<li><a href='login.php'>login</a></li>";
+            } ?>
           </ul>
         </li>
       </ul>
