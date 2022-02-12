@@ -288,4 +288,42 @@ function cari($keyword) {
             ";
   return query($query);
 }
+
+// halaman admin
+// tambah buku
+function tambahBuku($data) {
+  global $conn;
+
+  $judul = htmlspecialchars($data['judul']);
+  $tahun_terbit = htmlspecialchars($data['tahun_terbit']);
+  // $sampul = htmlspecialchars($data['sampul']);
+  $isbn = htmlspecialchars($data['isbn']);
+  $sinopsis = htmlspecialchars($data['sinopsis']);
+  $id_penerbit = htmlspecialchars($data['id_penerbit']);
+  $id_pengarang = htmlspecialchars($data['id_pengarang']);
+  $jumlah = htmlspecialchars($data['jumlah']);
+
+  $poto = upload();
+  if(!$poto) {
+    return false;
+  }
+
+  // cek jika input ada yang kosong
+  if($judul == '' || $tahun_terbit == '' || $poto == '' || $isbn == '' || $sinopsis == '' || $id_penerbit == '' || $id_pengarang == '' || $jumlah == '') {
+    echo "<script>
+            alert('tidak boleh ada yang kosong');
+          </script>";
+    return false;
+  }
+
+  // tambah data
+  $query = "INSERT INTO buku
+            VALUES
+            ('', '$judul', '$tahun_terbit', '$poto', '$isbn', '$sinopsis', '$id_penerbit', '$id_pengarang', '$jumlah')
+            ";
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn);
+}
+
 ?>
