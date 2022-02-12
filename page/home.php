@@ -84,6 +84,7 @@
     <!-- about end -->
 
     <!-- cta start -->
+    <?php if(!isset($_SESSION['login'])) : ?>
     <section class="cta" id="cta">
       <div class="content">
         <h3><span class="line-down">sign up</span> <span class="lower-font">and</span> get started to reading</h3>
@@ -96,3 +97,4 @@
       </div>
     </section>
     <!-- cta end -->
+    <?php endif; ?>

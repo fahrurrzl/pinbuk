@@ -41,16 +41,19 @@ if(isset($_POST['ubah_password'])){
 <!-- detail profil start -->
 <section class="detail-profil" id="detail-profil">
   <div class="detail-profil-container">
-  <form action="" method="POST">
+  <form action="" method="POST" enctype="multipart/form-data">
     <div class="detail-profil-wrapper">
       <!-- lelft -->
       <div class="detail-profil-left">
         <div class="detail-profil-img">
-          <img src="img/<?= $peminjam['poto']; ?>" alt="" />
-          <input type="file" name="poto" id="poto" />
+          <img src="img/<?= $peminjam['poto']; ?>" alt="" class="img-preview" />
+          <input type="hidden" name="potoLama" value="<?= $peminjam['poto']; ?>">
+          <input type="file" name="poto" class="poto" onchange="previewPoto()" />
           <p style="margin-top: 2rem;">maksimal ukuran poto 3mb, dan ekstensi jp,png,jpeg</p>
 
           <input type="hidden" name="id_peminjam" value="<?= $id_peminjam; ?>">
+          <input type="hidden" name="gambar_lama" value="<?= $peminjam['poto']; ?>">
+
           <div class="form-control" style="margin-top: 5rem; width: 90%;">
             <input class="password-input" style="text-transform: none;" type="password" name="password_lama" placeholder="password lama" >
             <div class="btn-eye"><i class="uil uil-eye-slash"></i></div>

@@ -29,6 +29,11 @@ WHERE id_peminjam = $id_peminjam AND status = 'pinjam' ORDER BY tgl_kembali ASC"
 @$peminjam = mysqli_query($conn, "SELECT * FROM peminjam WHERE id_peminjam = '$id_peminjam'");
 $row = mysqli_fetch_assoc($peminjam);
 
+// tombol cari di klik
+if(isset($_POST['cari'])){
+  $buku = cari($_POST['keyword']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -85,6 +90,15 @@ $row = mysqli_fetch_assoc($peminjam);
         <span class="centerSpan"></span>
         <span class="bottomSpan"></span>
       </div>
+
+      <div class="icon">
+        <div id="search-btn"><i class="uil uil-search"></i></div>
+      </div>
+
+      <form action="" method="POST" class="search-form">
+        <input type="text" name="keyword" placeholder="cari buku..." class="input-box" />
+        <button class="searchBtn" name="cari"><i class="uil uil-search"></i></button>
+      </form>
 
       <ul class="profil-container">
         <li class="profil-wrapper">

@@ -264,8 +264,22 @@ section {
       }
     }
   }
-  .profil-container {
+
+  .icon {
     margin-left: auto;
+    margin-right: 1rem;
+    #search-btn {
+      cursor: pointer;
+      i {
+        font-size: 1.9rem;
+      }
+      &:hover i {
+        color: $darkWhite;
+      }
+    }
+  }
+
+  .profil-container {
     .profil-wrapper {
       position: relative;
       a i {
@@ -301,6 +315,45 @@ section {
     }
     &:hover .profil-box {
       display: inherit;
+    }
+  }
+  .search-form {
+    position: absolute;
+    top: 99%;
+    left: 0;
+    right: 0;
+    background: $black;
+    height: 3rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 1rem;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    &.active {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    input {
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      color: $black;
+      border-radius: 0.3rem;
+      text-transform: none;
+    }
+    .searchBtn {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: none;
+      i {
+        font-size: 1.5rem;
+      }
+      &:hover i {
+        color: $darkWhite;
+      }
     }
   }
 }
@@ -1083,6 +1136,7 @@ footer {
       height: 100vh;
       border-top: $border;
       backdrop-filter: blur(1rem);
+      -webkit-backdrop-filter: blur(1rem);
       color: $white;
       background: rgba($color: $lightBlack, $alpha: 0.7);
       clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);

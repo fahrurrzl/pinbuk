@@ -145,6 +145,58 @@ function kembali($data){
   return mysqli_affected_rows($conn);
 }
 
+// upload foto
+function upload(){
+  $nama_file = $_FILES['poto']['name'];
+  $tipe_file = $_FILES['poto']['type'];
+  $ukuran_file = $_FILES['poto']['size'];
+  $tmp_file = $_FILES['poto']['tmp_name'];
+  $error = $_FILES['poto']['error'];
+
+  // ketika tidak ada gambara yang dipilih
+  if($error == 4) {
+    return 'nopoto.jpg';
+  }
+
+  // cek ekstensi file
+  $daftar_gambar = ['jpg', 'jpeg', 'png'];
+  $ekstensi_file = explode('.', $nama_file);
+  $ekstensi_file = strtolower(end($ekstensi_file));
+
+  if(!in_array($ekstensi_file, $daftar_gambar)){
+    echo "<script>
+            alert('yang anda pilih bukan gambar');
+          </script>";
+    return false;
+  }
+
+  // cek tipe file
+  if($tipe_file != 'image/jpeg' && $tipe_file != 'image/png') {
+    echo "<script>
+            alert('yang anda pilih bukan gambar');
+          </script>";
+    return false;
+  }
+
+  // cek ukuran file lebih dari 3mb
+  if($ukuran_file > 3000000) {
+    echo "<script>
+            alert('ukuran gambar terlalu besar');
+          </script>";
+    return false;
+  }
+
+  // lolos cek
+  // generate nama file baru
+  $nama_file_baru = uniqid();
+  $nama_file_baru .= '.';
+  $nama_file_baru .= $ekstensi_file;
+
+  // upload file
+  move_uploaded_file($tmp_file, 'img/' . $nama_file_baru);
+  return $nama_file_baru;
+}
+
 // ubah data peminjam
 function ubah($data) {
   global $conn;
@@ -157,6 +209,16 @@ function ubah($data) {
   $tlp = htmlspecialchars($data['tlp']);
   $email = htmlspecialchars($data['email']);
   $alamat = htmlspecialchars($data['alamat']);
+  $potoLama = htmlspecialchars($data['potoLama']);
+
+  $poto = upload();
+  if(!$poto) {
+    return false;
+  }
+
+  if($poto == 'nopoto.jpg') {
+    $poto = $potoLama;
+  }
 
   $query = "UPDATE peminjam SET
             nama_peminjam = '$nama_peminjam',
@@ -165,11 +227,13 @@ function ubah($data) {
             jk = '$jk',
             tlp = '$tlp',
             email = '$email',
-            alamat = '$alamat'
+            alamat = '$alamat',
+            poto = '$poto'
             WHERE id_peminjam = '$id_peminjam'
             ";
 
   mysqli_query($conn, $query);
+  mysqli_errno($conn);
   return mysqli_affected_rows($conn);
 }
 
@@ -208,5 +272,20 @@ function ubahPassword($data) {
   mysqli_query($conn, $query);
 
   return mysqli_affected_rows($conn);
+}
+
+// cari buku
+function cari($keyword) {
+  $query = "SELECT * FROM buku
+  INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
+  INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit
+            WHERE
+            judul LIKE '%$keyword%' OR
+            tahun_terbit LIKE '%$keyword%' OR
+            isbn LIKE '%$keyword%' OR
+            nama_penerbit LIKE '%$keyword%' OR
+            nama_pengarang LIKE '%$keyword%'
+            ";
+  return query($query);
 }
 ?>

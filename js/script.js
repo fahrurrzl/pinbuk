@@ -7,6 +7,17 @@ btnMenu.addEventListener("click", () => {
   navbar.classList.toggle("active");
 });
 
+const btnSearch = document.getElementById("search-btn");
+const searchForm = document.querySelector(".search-form");
+const inputBox = document.querySelector(".input-box");
+
+btnSearch.addEventListener("click", () => {
+  searchForm.classList.toggle("active");
+  navbar.classList.remove("active");
+  btnMenu.classList.remove("active");
+  inputBox.focus();
+});
+
 // initialize swiper
 var swiper = new Swiper(".mySwiper", {
   effect: "cards",
@@ -80,3 +91,15 @@ btnSiginin.addEventListener("click", () => {
   signupForm.classList.remove("show");
   signinForm.classList.add("show");
 });
+
+function previewPoto() {
+  const poto = document.querySelector(".poto");
+  const imgPreview = document.querySelector(".img-preview");
+
+  const oFReader = new FileReader();
+  oFReader.readAsDataURL(poto.files[0]);
+
+  oFReader.onload = function (oFREvent) {
+    imgPreview.src = oFREvent.target.result;
+  };
+}
