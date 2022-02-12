@@ -91,7 +91,7 @@ $row = mysqli_fetch_assoc($peminjam);
           <a href="#" class="profil"><i class="uil uil-user-circle"></i> </a>
           <ul class="profil-box">
             <?php if(isset($_SESSION['login'])) { ?>
-            <li><a href="?page=detail-profil">profil</a></li>
+            <li><a href="?page=detail-profil&id_peminjam=<?= $id_peminjam; ?>">profil</a></li>
             <li><a href="logout.php">log out</a></li>
             <?php } else {
               echo "<li><a href='login.php'>login</a></li>";

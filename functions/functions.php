@@ -23,11 +23,13 @@ function registrasi($data){
   $tl = htmlspecialchars($data['tl']);
   $jk = htmlspecialchars($data['jk']);
   $tlp = htmlspecialchars($data['tlp']);
+  $email = htmlspecialchars($data['email']);
   $alamat = htmlspecialchars($data['alamat']);
   $username = strtolower(stripslashes($data['username']));
   $password = mysqli_real_escape_string($conn, $data['password']);
   $password_konfirmasi = mysqli_real_escape_string($conn, $data['password_konfirmasi']);
   $level = htmlspecialchars($data['level']);
+  $poto = htmlspecialchars($data['poto']);
 
   // ubah format tanggal
   $tl = $data['tl'];
@@ -55,8 +57,7 @@ function registrasi($data){
   // tambahkan user baru
   $query = "INSERT INTO peminjam
             VALUES
-            ('', '$nama_peminjam', '$tempat_lahir', '$tl', '$jk', '$tlp', '$alamat', '$username', '$password', '$level')
-            ";
+            ('', '$nama_peminjam', '$tempat_lahir', '$tl', '$jk', '$tlp', '$email', '$alamat', '$username', '$password', '$level', '$poto')";
   mysqli_query($conn, $query);
   
   return mysqli_affected_rows($conn);
@@ -140,6 +141,71 @@ function kembali($data){
   $jumlah_buku = $jumlah_buku['jumlah'] + 1;
   $sql = "UPDATE buku SET jumlah = '$jumlah_buku' WHERE id_buku = '$id_buku'";
   mysqli_query($conn, $sql);
+
+  return mysqli_affected_rows($conn);
+}
+
+// ubah data peminjam
+function ubah($data) {
+  global $conn;
+
+  $id_peminjam = $data['id_peminjam'];
+  $nama_peminjam = htmlspecialchars($data['nama_peminjam']);
+  $tempat_lahir = htmlspecialchars($data['tempat_lahir']);
+  $tl = htmlspecialchars($data['tl']);
+  $jk = htmlspecialchars($data['jk']);
+  $tlp = htmlspecialchars($data['tlp']);
+  $email = htmlspecialchars($data['email']);
+  $alamat = htmlspecialchars($data['alamat']);
+
+  $query = "UPDATE peminjam SET
+            nama_peminjam = '$nama_peminjam',
+            tempat_lahir = '$tempat_lahir',
+            tl = '$tl',
+            jk = '$jk',
+            tlp = '$tlp',
+            email = '$email',
+            alamat = '$alamat'
+            WHERE id_peminjam = '$id_peminjam'
+            ";
+
+  mysqli_query($conn, $query);
+  return mysqli_affected_rows($conn);
+}
+
+// ubah password
+function ubahPassword($data) {
+  global $conn;
+
+  $id_peminjam = $data['id_peminjam'];
+  $password_lama = mysqli_real_escape_string($conn, $data['password_lama']);
+  $password_baru = mysqli_real_escape_string($conn, $data['password_baru']);
+  $konfirmasi_password = mysqli_real_escape_string($conn, $data['konfirmasi_password']);
+
+  // cek password lama
+  $result = mysqli_query($conn, "SELECT password FROM peminjam WHERE id_peminjam = '$id_peminjam'");
+  $peminjam = mysqli_fetch_assoc($result);
+  if(!password_verify($password_lama, $peminjam['password'])) {
+    echo "<script>
+            alert('Password lama salah');
+          </script>";
+    return false;
+  }
+
+  // cek konfirmasi password
+  if($password_baru !== $konfirmasi_password) {
+    echo "<script>
+            alert('Konfirmasi password tidak sesuai');
+          </script>";
+    return false;
+  }
+
+  // enkripsi password
+  $password_baru = password_hash($password_baru, PASSWORD_DEFAULT);
+
+  // tambah data
+  $query = "UPDATE peminjam SET password = '$password_baru' WHERE id_peminjam = '$id_peminjam'";
+  mysqli_query($conn, $query);
 
   return mysqli_affected_rows($conn);
 }

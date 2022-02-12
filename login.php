@@ -84,7 +84,7 @@ if(isset($_POST['registrasi'])) {
             <?php endif; ?>
             <div class="field">
               <i class="uil uil-at"></i>
-              <input type="text" name="username" placeholder="username" required autocomplete="off" autofocus />
+              <input type="text" name="username" placeholder="username" required autofocus />
             </div>
             <div class="field">
               <i class="uil uil-lock"></i>
@@ -118,12 +118,12 @@ if(isset($_POST['registrasi'])) {
           <form action="" method="post">
             <div class="field">
               <i class="uil uil-user"></i>
-              <input type="text" name="nama_peminjam" placeholder="nama" required autocomplete="off" autofocus />
+              <input type="text" name="nama_peminjam" placeholder="nama" required />
             </div>
 
             <div class="field">
               <i class="uil uil-user-circle"></i>
-              <input type="text" name="username" placeholder="username" required autocomplete="off" />
+              <input type="text" name="username" placeholder="username" required />
             </div>
 
             <div class="field">
@@ -155,6 +155,11 @@ if(isset($_POST['registrasi'])) {
 
             <div class="field">
               <i class="uil uil-user-circle"></i>
+              <input type="email" name="email" placeholder="email" required />
+            </div>
+
+            <div class="field">
+              <i class="uil uil-user-circle"></i>
               <input type="text" name="alamat" placeholder="alamat" required />
             </div>
 
@@ -171,6 +176,7 @@ if(isset($_POST['registrasi'])) {
             </div>
 
             <input type="hidden" name="level" value="peminjam">
+            <input type="hidden" name="poto" value="nopoto.jpg">
 
             <input name="registrasi" class="btn" type="submit" value="sign up" />
           </form>

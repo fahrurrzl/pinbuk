@@ -42,6 +42,25 @@ p {
   }
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #d6d6d6;
+  -webkit-box-shadow: 0 0 0px 1rem #2c2b30 inset;
+}
+
+input:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+  color: #a3a09d;
+}
+
 .btn {
   display: inline-block;
   padding: 0.5rem 2rem;
@@ -153,6 +172,16 @@ p {
   text-transform: lowercase;
   font-size: 2.875rem;
   color: #a3a09d;
+}
+
+.form-control input,
+.form-control textarea {
+  background: none;
+  border: 1px solid #d6d6d6;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  width: 100%;
+  text-align: left;
 }
 
 html {
@@ -749,6 +778,11 @@ footer .copyright a:hover {
   opacity: 0.6;
 }
 
+.login .form-container .box .field input:-webkit-autofill, .login .form-container .box .field input:-webkit-autofill:hover {
+  -webkit-text-fill-color: #2c2b30;
+  -webkit-box-shadow: 0 0 0px 1rem #a3a09d inset;
+}
+
 .login .form-container .box .field .btn-eye,
 .login .form-container .box .field .btn-eye-signup,
 .login .form-container .box .field .btn-eye-conf {
@@ -832,7 +866,6 @@ footer .copyright a:hover {
 .login .form-container .box .field input[type="radio"]:checked::before {
   -webkit-transform: scale(1);
           transform: scale(1);
-  margin-top: 0.3rem;
   color: #2c2b30;
 }
 
@@ -1042,6 +1075,31 @@ footer .copyright a:hover {
           flex: 1 1 15rem;
 }
 
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-left .form-control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #d6d6d6;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-left .form-control input {
+  border: none;
+  outline: none;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-left .form-control i {
+  cursor: pointer;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-left .form-control i:hover {
+  color: #a3a09d;
+}
+
 .detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-left .detail-profil-img {
   width: 100%;
   border-radius: 0.5rem;
@@ -1080,8 +1138,102 @@ footer .copyright a:hover {
   padding-right: 1.5rem;
 }
 
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table tr td input {
+  padding: 0.5rem;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table tr td .field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #d6d6d6;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table tr td .field .form-control {
+  font-weight: 600;
+  color: rgba(214, 214, 214, 0.5);
+  font-size: 0.9em;
+  line-height: 1.1;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1rem auto;
+      grid-template-columns: 1rem auto;
+  gap: 1rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table tr td .field .form-control + .form-control {
+  margin: 0 2.3rem;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table tr td .field .form-control:focus-within {
+  color: #d6d6d6;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table tr td .field input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  -moz-appearance: none;
+       appearance: none;
+  /* For iOS < 15 */
+  background-color: #4f4f51;
+  /* Not removed via appearance */
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 0.15rem solid currentColor;
+  border-radius: 50%;
+  -webkit-transform: translateY(-0.075rem);
+          transform: translateY(-0.075rem);
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table tr td .field input[type="radio"]::before {
+  content: "";
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: 120ms -webkit-transform ease-in-out;
+  transition: 120ms -webkit-transform ease-in-out;
+  transition: 120ms transform ease-in-out;
+  transition: 120ms transform ease-in-out, 120ms -webkit-transform ease-in-out;
+  -webkit-box-shadow: inset 1rem 1rem var(--form-control-color);
+          box-shadow: inset 1rem 1rem var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table tr td .field input[type="radio"]:checked::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  color: #d6d6d6;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table tr td .field input[type="radio"]:focus {
+  outline: 0.15rem solid currentColor;
+  outline-offset: 0.15rem;
+}
+
 .detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table tr .kontak {
-  padding-right: 3.2rem;
+  padding-right: 3rem;
+}
+
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right .content table tr .kontak .form-control {
+  width: 19rem;
 }
 
 .detail-peminjam .detail-pinjam-kosong {

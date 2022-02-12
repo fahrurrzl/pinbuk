@@ -66,6 +66,26 @@ p {
   }
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: $white;
+  -webkit-box-shadow: 0 0 0px 1rem $black inset;
+}
+
+// disable
+input:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+  color: $darkWhite;
+}
+
 // btn
 .btn {
   display: inline-block;
@@ -162,6 +182,18 @@ p {
   text-transform: lowercase;
   font-size: 2.875rem;
   color: $darkWhite;
+}
+
+.form-control {
+  input,
+  textarea {
+    background: none;
+    border: 1px solid $white;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    width: 100%;
+    text-align: left;
+  }
 }
 
 html {
@@ -592,6 +624,11 @@ footer {
             color: $lightBlack;
             opacity: 0.6;
           }
+          &:-webkit-autofill,
+          &:-webkit-autofill:hover {
+            -webkit-text-fill-color: $black;
+            -webkit-box-shadow: 0 0 0px 1rem $darkWhite inset;
+          }
         }
         .btn-eye,
         .btn-eye-signup,
@@ -659,7 +696,6 @@ footer {
 
         input[type="radio"]:checked::before {
           transform: scale(1);
-          margin-top: 0.3rem;
           color: $black;
         }
 
@@ -807,6 +843,23 @@ footer {
       display: flex;
       flex-wrap: wrap;
       .detail-profil-left {
+        .form-control {
+          display: flex;
+          align-items: center;
+          border: 1px solid $white;
+          border-radius: 0.5rem;
+          padding: 0.3rem;
+          input {
+            border: none;
+            outline: none;
+          }
+          i {
+            cursor: pointer;
+            &:hover {
+              color: $darkWhite;
+            }
+          }
+        }
         flex: 1 1 15rem;
         .detail-profil-img {
           width: 100%;
@@ -836,9 +889,82 @@ footer {
                 color: $darkWhite;
                 padding-top: 1rem;
                 padding-right: 1.5rem;
+                input {
+                  padding: 0.5rem;
+                }
+                .field {
+                  display: flex;
+                  align-items: center;
+                  border: 1px solid $white;
+                  padding: 0.5rem;
+                  border-radius: 0.5rem;
+                  // radio
+                  .form-control {
+                    font-weight: 600;
+                    color: rgba($color: $white, $alpha: 0.5);
+                    font-size: 0.9em;
+                    line-height: 1.1;
+                    display: grid;
+                    grid-template-columns: 1rem auto;
+                    gap: 1rem;
+                    align-items: center;
+                  }
+                  .form-control + .form-control {
+                    // margin-top: 1em;
+                    margin: 0 2.3rem;
+                  }
+                  .form-control:focus-within {
+                    color: $white;
+                  }
+                  input[type="radio"] {
+                    /* Add if not using autoprefixer */
+                    -webkit-appearance: none;
+                    /* Remove most all native input styles */
+                    appearance: none;
+                    /* For iOS < 15 */
+                    background-color: $grey;
+                    /* Not removed via appearance */
+                    margin: 0;
+
+                    font: inherit;
+                    color: currentColor;
+                    width: 1.15rem;
+                    height: 1.15rem;
+                    border: 0.15rem solid currentColor;
+                    border-radius: 50%;
+                    transform: translateY(-0.075rem);
+                    display: grid;
+                    place-content: center;
+                  }
+
+                  input[type="radio"]::before {
+                    content: "";
+                    width: 0.65rem;
+                    height: 0.65rem;
+                    border-radius: 50%;
+                    transform: scale(0);
+                    transition: 120ms transform ease-in-out;
+                    box-shadow: inset 1rem 1rem var(--form-control-color);
+                    /* Windows High Contrast Mode */
+                    background-color: CanvasText;
+                  }
+
+                  input[type="radio"]:checked::before {
+                    transform: scale(1);
+                    color: $white;
+                  }
+
+                  input[type="radio"]:focus {
+                    outline: max(0.1rem, 0.15rem) solid currentColor;
+                    outline-offset: max(0.1rem, 0.15rem);
+                  }
+                }
               }
               .kontak {
-                padding-right: 3.2rem;
+                padding-right: 3rem;
+                .form-control {
+                  width: 19rem;
+                }
               }
             }
           }
