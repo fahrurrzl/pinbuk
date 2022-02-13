@@ -146,10 +146,12 @@ if(isset($_POST['cari'])){
       <div class="box-container">
         <div class="box">
           <h3>quick link</h3>
-          <a href="#home">beranda</a>
-          <a href="#books">buku</a>
-          <a href="#about">tentang</a>
-          <a href="#buku-saya">buku saya</a>
+          <a href="?page=home">home</a>
+          <a href="?page=home#books">books</a>
+          <a href="?page=home#about">about</a>
+          <?php if(isset($_SESSION['login'])) : ?>
+          <a href="?page=buku-saya">dipinjam</a>
+          <?php endif; ?>
         </div>
 
         <div class="box">

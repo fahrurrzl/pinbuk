@@ -140,11 +140,11 @@ if(isset($_POST['registrasi'])) {
               <i class="uil uil-user-circle"></i>
               <label class="form-control">
                 <input type="radio" name="jk" value="laki-laki" />
-                lali - laki
+                Laki-laki
               </label>
               <label class="form-control">
                 <input type="radio" name="jk" value="perempuan" />
-                perempuan
+                Perempuan
               </label>
             </div>
 

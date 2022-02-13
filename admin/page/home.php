@@ -1,3 +1,25 @@
+<?php 
+require '../functions/functions.php';
+
+// jumlah buku
+$jumlah_buku = query("SELECT * FROM buku");
+$jumlah_buku = count($jumlah_buku);
+
+// jumlah pengarang
+$jumlah_pengarang = query("SELECT * FROM pengarang");
+$jumlah_pengarang = count($jumlah_pengarang);
+
+// jumlah penerbit
+$jumlah_penerbit = query("SELECT * FROM penerbit");
+$jumlah_penerbit = count($jumlah_penerbit);
+
+// jumlah peminjam
+$jumlah_peminjam = query("SELECT * FROM peminjam");
+$jumlah_peminjam = count($jumlah_peminjam);
+
+
+?>
+
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -13,7 +35,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">buku</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_buku; ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-book fa-2x text-gray-300"></i>
@@ -30,7 +52,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">data pengarang</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_pengarang; ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-pen fa-2x text-gray-300"></i>
@@ -49,7 +71,7 @@
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">data penerbit</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">20</div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $jumlah_penerbit; ?></div>
                         </div>
                       </div>
                     </div>
@@ -68,7 +90,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">data peminjam</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_peminjam; ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-user fa-2x text-gray-300"></i>

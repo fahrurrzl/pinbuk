@@ -44,7 +44,7 @@ if(isset($_POST['kembali'])){
         <div class="detail-wrapper">
           <div class="box">
             <div class="box-img">
-              <img src="../img/dasar.jpg" alt="sampul" />
+              <img src="admin/img/<?= $dp['sampul']; ?>" alt="sampul" />
             </div>
 
             <div class="detail-box">

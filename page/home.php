@@ -4,7 +4,7 @@
       <div class="content">
         <h3>find your favorite <span class="line-down">books</span></h3>
         <p class="p-home">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim accusamus iure saepe non eos maiores hic illo est sed nesciunt!</p>
-        <a href="" class="btn">get started</a>
+        <a href="?page=home#books" class="btn">get started</a>
       </div>
 
       <div class="swiper mySwiper">

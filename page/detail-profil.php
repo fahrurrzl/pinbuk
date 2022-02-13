@@ -49,24 +49,24 @@ if(isset($_POST['ubah_password'])){
           <img src="img/<?= $peminjam['poto']; ?>" alt="" class="img-preview" />
           <input type="hidden" name="potoLama" value="<?= $peminjam['poto']; ?>">
           <input type="file" name="poto" class="poto" onchange="previewPoto()" />
-          <p style="margin-top: 2rem;">maksimal ukuran poto 3mb, dan ekstensi jp,png,jpeg</p>
+          <p style="margin-top: 2rem;">maksimal ukuran poto 3mb, dan ekstensi jpg, jpeg, png</p>
 
           <input type="hidden" name="id_peminjam" value="<?= $id_peminjam; ?>">
           <input type="hidden" name="gambar_lama" value="<?= $peminjam['poto']; ?>">
 
           <div class="form-control" style="margin-top: 5rem; width: 90%;">
-            <input class="password-input" style="text-transform: none;" type="password" name="password_lama" placeholder="password lama" >
-            <div class="btn-eye"><i class="uil uil-eye-slash"></i></div>
+            <input class="password-input-one" style="text-transform: none;" type="password" name="password_lama" placeholder="password lama" >
+            <div class="btn-eye-one"><i class="uil uil-eye-slash"></i></div>
           </div>
 
           <div class="form-control" style="margin-top: 1rem; width: 90%;">
-            <input class="password-input-signup" style="text-transform: none;" type="password" name="password_baru" placeholder="password baru" >
-            <div class="btn-eye-signup"><i class="uil uil-eye-slash"></i></div>
+            <input class="password-input-two" style="text-transform: none;" type="password" name="password_baru" placeholder="password baru" >
+            <div class="btn-eye-two"><i class="uil uil-eye-slash"></i></div>
           </div>
 
           <div class="form-control" style="margin-top: 1rem; width: 90%;">
-            <input class="password-input-conf" style="text-transform: none;" type="password" name="konfirmasi_password" placeholder="konfirmasi password">
-            <div class="btn-eye-conf"><i class="uil uil-eye-slash"></i></div>
+            <input class="password-input-three" style="text-transform: none;" type="password" name="konfirmasi_password" placeholder="konfirmasi password">
+            <div class="btn-eye-three"><i class="uil uil-eye-slash"></i></div>
           </div>
 
           <button style="margin-top: 2rem;" class="btn" name="ubah_password">ubah password</button>
@@ -175,3 +175,5 @@ if(isset($_POST['ubah_password'])){
   </div>
 </section>
 <!-- detail profil end -->
+
+<script src="../js/script.js"></script>

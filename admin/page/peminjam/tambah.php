@@ -34,10 +34,6 @@ if(isset($_POST['simpan'])) {
         <div class="col-md-12">
           <form method="post" role="form" enctype="multipart/form-data">
           <input type="hidden" name="poto" value="nopoto.jpg">
-            <div class="form-group">
-              <label>Foto</label>
-              <input type="file" class="form-control" name="poto" />
-            </div>
 
             <div class="form-group">
               <label>Nama</label>

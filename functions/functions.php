@@ -62,6 +62,53 @@ function registrasi($data){
   return mysqli_affected_rows($conn);
 }
 
+function registrasiAdmin($data){
+  global $conn;
+
+  $nama_peminjam = htmlspecialchars($data['nama_peminjam']);
+  $tempat_lahir = htmlspecialchars($data['tempat_lahir']);
+  $tl = htmlspecialchars($data['tl']);
+  $jk = htmlspecialchars($data['jk']);
+  $tlp = htmlspecialchars($data['tlp']);
+  $email = htmlspecialchars($data['email']);
+  $alamat = htmlspecialchars($data['alamat']);
+  $username = strtolower(stripslashes($data['username']));
+  $password = mysqli_real_escape_string($conn, $data['password']);
+  $password_konfirmasi = mysqli_real_escape_string($conn, $data['password_konfirmasi']);
+  $poto = htmlspecialchars($data['poto']);
+
+  // ubah format tanggal
+  $tl = $data['tl'];
+  $tl = date('Y-m-d', strtotime($tl));
+
+  // cel username
+  $cek_username = mysqli_query($conn, "SELECT username FROM admin WHERE username = '$username'");
+  if(mysqli_fetch_assoc($cek_username)) {
+    echo "<script>
+            alert('Username sudah terdaftar');
+          </script>";
+    return false;
+  }
+  // cek konfirmasi password
+  if($password != $password_konfirmasi) {
+    echo "<script>
+            alert('Konfirmasi password tidak sesuai');
+          </script>";
+    return false;
+  }
+
+  // enkripsi password
+  $password = password_hash($password, PASSWORD_DEFAULT);
+
+  // tambahkan user baru
+  $query = "INSERT INTO admin
+            VALUES
+            ('', '$nama_peminjam', '$tempat_lahir', '$tl', '$jk', '$tlp', '$email', '$alamat', '$username', '$password', '$poto')";
+  mysqli_query($conn, $query);
+  
+  return mysqli_affected_rows($conn);
+}
+
 // insert detail peminjaman
 function pinjam($data) {
   global $conn;
@@ -716,6 +763,59 @@ function hapusPeminjam($id){
   $query = "DELETE FROM peminjam WHERE id_peminjam = $id";
   mysqli_query($conn, $query) or die(mysqli_error($conn));
 
+  return mysqli_affected_rows($conn);
+}
+
+// hapus admin
+function hapusAdmin($id){
+  global $conn;
+
+  $admin = query("SELECT * FROM admin WHERE id_admin = $id")[0];
+  
+  // hapus data
+  $query = "DELETE FROM admin WHERE id_admin = $id";
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+  return mysqli_affected_rows($conn);
+}
+
+// ubah admin
+function ubahAdmin($data) {
+  global $conn;
+
+  $id_admin = $data['id_admin'];
+  $nama_admin = htmlspecialchars($data['nama_admin']);
+  $tempat_lahir = htmlspecialchars($data['tempat_lahir']);
+  $tl = htmlspecialchars($data['tl']);
+  $jk = htmlspecialchars($data['jk']);
+  $tlp = htmlspecialchars($data['tlp']);
+  $email = htmlspecialchars($data['email']);
+  $alamat = htmlspecialchars($data['alamat']);
+  $potoLama = htmlspecialchars($data['potoLama']);
+
+  $poto = upload();
+  if(!$poto) {
+    return false;
+  }
+
+  if($poto == 'nopoto.jpg') {
+    $poto = $potoLama;
+  }
+
+  $query = "UPDATE admin SET
+            nama_admin = '$nama_admin',
+            tempat_lahir = '$tempat_lahir',
+            tl = '$tl',
+            jk = '$jk',
+            tlp = '$tlp',
+            email = '$email',
+            alamat = '$alamat',
+            poto = '$poto'
+            WHERE id_admin = '$id_admin'
+            ";
+
+  mysqli_query($conn, $query);
+  mysqli_error($conn);
   return mysqli_affected_rows($conn);
 }
 ?>

@@ -37,8 +37,9 @@ if(isset($_POST['simpan'])) {
         <div class="col-md-12">
           <form method="post" role="form" enctype="multipart/form-data">
             <div class="form-group">
-              <label>Sampul</label>
-              <input type="file" class="form-control" name="poto" />
+              <label>Foto</label>
+              <img src="img/nosampul.jpg" class="img-preview img-thumbnail" alt="Sampul">
+              <input type="file" class="poto form-control" name="poto" onchange="previewPoto()" />
             </div>
 
             <div class="form-group">

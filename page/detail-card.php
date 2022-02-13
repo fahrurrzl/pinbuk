@@ -39,7 +39,7 @@ if(isset($_POST['pinjam'])) {
         <div class="detail-container">
           <div class="detail-wrapper">
             <div class="detail-img">
-              <img src="img/sikolog.jpg" alt="sampul" />
+              <img src="admin/img/<?= $detailBuku['sampul']; ?>" alt="sampul" />
             </div>
             <div class="detail-info">
               <h1><?= $detailBuku['judul']; ?></h1>
