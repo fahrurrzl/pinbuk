@@ -103,6 +103,22 @@ input:disabled {
   }
 }
 
+.btn-border {
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  background: none;
+  border-radius: 1rem;
+  color: $white;
+  font-weight: bold;
+  border: $border;
+  cursor: pointer;
+  &:hover {
+    background: $white;
+    color: $black;
+    box-shadow: 0 0 1rem rgba($color: $white, $alpha: 0.5);
+  }
+}
+
 .btn-card {
   display: inline-block;
   padding: 0.5rem;
@@ -292,17 +308,38 @@ section {
       .profil-box {
         position: absolute;
         top: 2rem;
-        left: -125%;
         right: 0;
         background: $white;
-        width: 7rem;
+        width: 20rem;
         border-radius: 0.5rem;
         padding: 0.6rem 1rem;
-        clip-path: polygon(0 7%, 45% 7%, 50% 0, 50% 0, 55% 7%, 100% 7%, 100% 100%, 0 100%);
-        display: none;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
         li {
+          display: block;
+          float: left;
+          margin: 0.5rem;
+          height: 5rem;
+          vertical-align: middle;
           margin-top: 0.5rem;
+          img {
+            margin-right: 0.3rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+          .logout {
+            padding-top: 3.5rem;
+            i {
+              font-size: 1rem;
+              color: $black;
+            }
+            &:hover i {
+              color: $darkWhite;
+            }
+          }
           a {
+            padding-top: 0.7rem;
             color: $black;
             font-weight: bold;
             display: block;
@@ -314,7 +351,7 @@ section {
       }
     }
     &:hover .profil-box {
-      display: inherit;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
   }
   .search-form {
@@ -1098,6 +1135,8 @@ footer {
             margin-bottom: 0.7rem;
           }
           .btn-kembali {
+            display: flex;
+            gap: 1rem;
             button {
               width: 100%;
             }
@@ -1226,5 +1265,13 @@ footer {
 
   .books {
     min-height: 55vh;
+  }
+
+  .profil-container {
+    .profil-wrapper {
+      .profil-box {
+        left: -800%;
+      }
+    }
   }
 }

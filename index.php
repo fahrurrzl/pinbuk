@@ -105,8 +105,11 @@ if(isset($_POST['cari'])){
           <a href="#" class="profil"><i class="uil uil-user-circle"></i> </a>
           <ul class="profil-box">
             <?php if(isset($_SESSION['login'])) { ?>
-            <li><a href="?page=detail-profil&id_peminjam=<?= $id_peminjam; ?>">profil</a></li>
-            <li><a href="logout.php">log out</a></li>
+              <li><img src="img/<?= $row['poto']; ?>" alt=""></li>
+            <li>
+              <a href="?page=detail-profil&id_peminjam=<?= $id_peminjam; ?>">
+              <?= $row['nama_peminjam']; ?></a></li>
+            <li><a class="logout" href="logout.php">log out <i class="uil uil-signout"></i></a></li>
             <?php } else {
               echo "<li><a href='login.php'>login</a></li>";
             } ?>
@@ -132,6 +135,8 @@ if(isset($_POST['cari'])){
             include 'page/detail-profil.php';
           } elseif($page == 'buku-saya'){
             include 'page/detail_peminjam.php';
+          } elseif($page == 'perpanjang') {
+            include 'page/perpanjang.php';
           } else {
             include 'page/home.php';
           }

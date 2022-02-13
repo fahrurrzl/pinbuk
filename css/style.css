@@ -79,6 +79,24 @@ input:disabled {
           box-shadow: 0 0 1rem rgba(214, 214, 214, 0.5);
 }
 
+.btn-border {
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  background: none;
+  border-radius: 1rem;
+  color: #d6d6d6;
+  font-weight: bold;
+  border: 2px solid #d6d6d6;
+  cursor: pointer;
+}
+
+.btn-border:hover {
+  background: #d6d6d6;
+  color: #2c2b30;
+  -webkit-box-shadow: 0 0 1rem rgba(214, 214, 214, 0.5);
+          box-shadow: 0 0 1rem rgba(214, 214, 214, 0.5);
+}
+
 .btn-card {
   display: inline-block;
   padding: 0.5rem;
@@ -300,22 +318,48 @@ section {
 .header .profil-container .profil-wrapper .profil-box {
   position: absolute;
   top: 2rem;
-  left: -125%;
   right: 0;
   background: #d6d6d6;
-  width: 7rem;
+  width: 20rem;
   border-radius: 0.5rem;
   padding: 0.6rem 1rem;
-  -webkit-clip-path: polygon(0 7%, 45% 7%, 50% 0, 50% 0, 55% 7%, 100% 7%, 100% 100%, 0 100%);
-          clip-path: polygon(0 7%, 45% 7%, 50% 0, 50% 0, 55% 7%, 100% 7%, 100% 100%, 0 100%);
-  display: none;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+          clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 }
 
 .header .profil-container .profil-wrapper .profil-box li {
+  display: block;
+  float: left;
+  margin: 0.5rem;
+  height: 5rem;
+  vertical-align: middle;
   margin-top: 0.5rem;
 }
 
+.header .profil-container .profil-wrapper .profil-box li img {
+  margin-right: 0.3rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.header .profil-container .profil-wrapper .profil-box li .logout {
+  padding-top: 3.5rem;
+}
+
+.header .profil-container .profil-wrapper .profil-box li .logout i {
+  font-size: 1rem;
+  color: #2c2b30;
+}
+
+.header .profil-container .profil-wrapper .profil-box li .logout:hover i {
+  color: #a3a09d;
+}
+
 .header .profil-container .profil-wrapper .profil-box li a {
+  padding-top: 0.7rem;
   color: #2c2b30;
   font-weight: bold;
   display: block;
@@ -326,7 +370,8 @@ section {
 }
 
 .header .profil-container:hover .profil-box {
-  display: inherit;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .header .search-form {
@@ -1406,6 +1451,13 @@ footer .copyright a:hover {
   margin-bottom: 0.7rem;
 }
 
+.detail-peminjam .detail-container .detail-wrapper .box .setatus-box .btn-kembali {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+
 .detail-peminjam .detail-container .detail-wrapper .box .setatus-box .btn-kembali button {
   width: 100%;
 }
@@ -1511,6 +1563,9 @@ footer .copyright a:hover {
   }
   .books {
     min-height: 55vh;
+  }
+  .profil-container .profil-wrapper .profil-box {
+    left: -800%;
   }
 }
 /*# sourceMappingURL=style.css.map */

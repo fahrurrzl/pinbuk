@@ -84,6 +84,7 @@ if(isset($_POST['kembali'])){
                 <input type="hidden" name="id_buku" value="<?= $dp['id_buku']; ?>">
                 <div class="btn-kembali">
                   <button name="kembali" class="btn">kembali</button>
+                  <a href="?page=perpanjang&id=<?= $dp['id_detail']; ?>&id_buku=<?= $dp['id_buku']; ?>&lambat=<?= $lambat; ?>&tgl_kembali=<?= $dp['tgl_kembali'] ?>" name="perpanjang" class="btn-border">perpanjang</a>
                 </div>
               </form>
             </div>
