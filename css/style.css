@@ -52,7 +52,6 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-text-fill-color: #d6d6d6;
-  -webkit-box-shadow: 0 0 0px 1rem #2c2b30 inset;
 }
 
 input:disabled {
@@ -336,7 +335,6 @@ section {
   float: left;
   margin: 0.5rem;
   height: 5rem;
-  vertical-align: middle;
   margin-top: 0.5rem;
 }
 
@@ -897,7 +895,6 @@ footer .copyright a:hover {
 
 .login .form-container .box .field input:-webkit-autofill, .login .form-container .box .field input:-webkit-autofill:hover {
   -webkit-text-fill-color: #2c2b30;
-  -webkit-box-shadow: 0 0 0px 1rem #a3a09d inset;
 }
 
 .login .form-container .box .field .btn-eye,

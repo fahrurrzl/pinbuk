@@ -31,7 +31,7 @@ $row = mysqli_fetch_assoc($peminjam);
 
 // tombol cari di klik
 if(isset($_POST['cari'])){
-  $buku = cari($_POST['keyword']);
+  @$buku = cari($_POST['keyword']);
 }
 
 ?>

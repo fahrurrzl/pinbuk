@@ -76,7 +76,6 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-text-fill-color: $white;
-  -webkit-box-shadow: 0 0 0px 1rem $black inset;
 }
 
 // disable
@@ -322,7 +321,6 @@ section {
           float: left;
           margin: 0.5rem;
           height: 5rem;
-          vertical-align: middle;
           margin-top: 0.5rem;
           img {
             margin-right: 0.3rem;
@@ -724,7 +722,6 @@ footer {
           &:-webkit-autofill,
           &:-webkit-autofill:hover {
             -webkit-text-fill-color: $black;
-            -webkit-box-shadow: 0 0 0px 1rem $darkWhite inset;
           }
         }
         .btn-eye,
