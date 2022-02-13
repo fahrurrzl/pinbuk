@@ -14,7 +14,7 @@ if(isset($_POST['pinjam'])) {
     if(pinjam($_POST) > 0) {
         echo "<script>
         alert('Buku berhasil dipinjam');
-        document.location.href = '?page=buku-saya';
+        document.location.href = '?page=dipinjam';
         </script>";
     } else {
       echo "<script>

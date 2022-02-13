@@ -8,7 +8,7 @@ $tgl_kembali = $_GET['tgl_kembali'];
 if($lambat > 7) {
   echo "<script>
           alert('Maaf, buku tidak dapat diperpanjang, karena lebih dari 7 hari, kembalikan buku terlebih dahulu dan pinjam kembali');
-          window.location.href = '?page=buku-saya';
+          window.location.href = '?page=dipinjam';
         </script>";
 } else {
   // tambah 7 hari
@@ -18,12 +18,12 @@ if($lambat > 7) {
   if($result) {
     echo "<script>
           alert('Berhasil menambahkan 7 hari');
-          window.location.href = '?page=buku-saya';
+          window.location.href = '?page=dipinjam';
         </script>";
   } else {
     echo "<script>
           alert('Gagal menambahkan 7 hari');
-          window.location.href = '?page=buku-saya';
+          window.location.href = '?page=dipinjam';
         </script>";
   }
 }

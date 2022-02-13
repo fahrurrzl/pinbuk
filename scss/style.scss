@@ -117,6 +117,9 @@ input:disabled {
     color: $black;
     box-shadow: 0 0 1rem rgba($color: $white, $alpha: 0.5);
   }
+  &:hover i {
+    color: $black;
+  }
 }
 
 .btn-card {

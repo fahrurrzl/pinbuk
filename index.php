@@ -81,7 +81,8 @@ if(isset($_POST['cari'])){
         <a href="?page=home#books">books</a>
         <a href="?page=home#about">about</a>
         <?php if(isset($_SESSION['login'])) : ?>
-        <a href="?page=buku-saya">dipinjam</a>
+        <a href="?page=dipinjam">dipinjam</a>
+        <a href="?page=riwayat">riwayat pinjam</a>
         <?php endif; ?>
       </nav>
 
@@ -133,10 +134,16 @@ if(isset($_POST['cari'])){
             }
           } elseif($page == 'detail-profil') {
             include 'page/detail-profil.php';
-          } elseif($page == 'buku-saya'){
+          } elseif($page == 'dipinjam'){
             include 'page/detail_peminjam.php';
           } elseif($page == 'perpanjang') {
             include 'page/perpanjang.php';
+          } elseif($page == 'riwayat') {
+            if($aksi == 'hapus'){
+              include 'page/hapus.php';
+            } else {
+              include 'page/riwayat.php';
+            }
           } else {
             include 'page/home.php';
           }

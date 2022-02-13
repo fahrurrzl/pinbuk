@@ -97,6 +97,10 @@ input:disabled {
           box-shadow: 0 0 1rem rgba(214, 214, 214, 0.5);
 }
 
+.btn-border:hover i {
+  color: #2c2b30;
+}
+
 .btn-card {
   display: inline-block;
   padding: 0.5rem;

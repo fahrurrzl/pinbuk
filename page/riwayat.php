@@ -8,21 +8,21 @@ if(isset($_SESSION['login'])) {
 INNER JOIN buku ON detail_peminjam.id_buku = buku.id_buku
 INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
 INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit
-WHERE id_peminjam = $id_peminjam AND status = 'pinjam' ORDER BY tgl_kembali ASC");
+WHERE id_peminjam = $id_peminjam AND status = 'kembali'");
 
 // menampilkan data peminjam
 $peminjam = mysqli_query($conn, "SELECT * FROM peminjam WHERE id_peminjam = '$id_peminjam'");
 $row = mysqli_fetch_assoc($peminjam);
 
 if(isset($_POST['kembali'])){
-  if(kembali($_POST) > 0){
+  if(pinjamKembali($_POST) > 0){
     echo "<script>
-    alert('Berhasil mengembalikan buku');
+    alert('Berhasil meminjam buku kembali');
     document.location.href = '?page=dipinjam';
     </script>";
   } else {
     echo "<script>
-    alert('Gagal mengembalikan buku');
+    alert('Gagal meminjam buku kembali');
     document.location.href = '?page=dipinjam';
     </script>";
   }
@@ -35,7 +35,7 @@ if(isset($_POST['kembali'])){
       // jika data detail kosong
       if(empty($detailPinjam)) {
         echo "<div class='detail-pinjam-kosong'>
-        <h2>Anda belum meminjam buku</h2>
+        <h2>Tidak ada riwayat pinjam</h2>
         </div>";
       } else {
         foreach($detailPinjam as $dp) :
@@ -51,6 +51,7 @@ if(isset($_POST['kembali'])){
               <h3><?= $dp['judul'] ?></h3>
               <p>pengarang : <?= $dp['nama_pengarang'] ?></p>
               <p>penerbit : <?= $dp['nama_penerbit'] ?></p>
+              <h6>jumlah buku sekarang : <?= $dp['jumlah']; ?></h6>
             </div>
 
             <div class="setatus-box">
@@ -60,12 +61,11 @@ if(isset($_POST['kembali'])){
                   <p class="tgl"><?= $dp['tgl_pinjam'] ?></p>
                 </div>
                 <div class="kembali">
-                  <p class="ket-tgl">tgl kembali</p>
-                  <p class="tgl"><?= $dp['tgl_kembali'] ?></p>
+                  <p class="ket-tgl">tgl dikembalikan</p>
+                  <p class="tgl"><?= $dp['tgl_dikembalikan'] ?></p>
                 </div>
               </div>
-              
-              <h2><?php if($dp['status'] == 'pinjam') echo 'dipinjam'; ?></h2>
+              <h2><?php if($dp['status'] == 'kembali') echo 'dikembalikan' ?></h2>
               <h3 style="text-align: center; margin: -.5rem 0 1rem 0; color: #f33a3a;">
               <?php 
                 $denda = 1000;
@@ -81,12 +81,14 @@ if(isset($_POST['kembali'])){
 
               <form action="" method="POST">
                 <input type="hidden" name="id_detail" value="<?= $dp['id_detail']; ?>">
-                <input type="hidden" name="status" value="kembali">
+                <input type="hidden" name="status" value="<?= $dp['status']; ?>">
                 <input type="hidden" name="id_buku" value="<?= $dp['id_buku']; ?>">
-                <input type="hidden" name="tgl_dikembalikan" value="<?= $tgl_sekarang; ?>">
+                <input type="hidden" name="id_peminjam" value="<?= $dp['id_peminjam']; ?>">
+                <input type="hidden" name="tgl_sekarang" value="<?= $tgl_sekarang; ?>">
+                <input type="hidden" name="tgl_pinjam" value="<?= $tgl_sekarang; ?>">
                 <div class="btn-kembali">
-                  <button name="kembali" class="btn">kembali</button>
-                  <a href="?page=perpanjang&id=<?= $dp['id_detail']; ?>&id_buku=<?= $dp['id_buku']; ?>&lambat=<?= $lambat; ?>&tgl_kembali=<?= $dp['tgl_kembali'] ?>" name="perpanjang" class="btn-border">perpanjang</a>
+                  <button name="kembali" class="btn">pinjam lagi</button>
+                  <a href="?page=riwayat&aksi=hapus&id=<?= $dp['id_detail']; ?>" name="hapus" class="btn-border"><i class="uil uil-trash"></i></a>
                 </div>
               </form>
             </div>

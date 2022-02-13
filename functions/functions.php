@@ -177,14 +177,51 @@ function kembali($data){
   $id_detail = $data['id_detail'];
   $id_buku = $data['id_buku'];
   $status = $data['status'];
+  $tgl_dikembalikan = $data['tgl_dikembalikan'];
 
-  $query = "UPDATE detail_peminjam SET status = '$status' WHERE id_detail = '$id_detail'";
+  $query = "UPDATE detail_peminjam SET status = '$status', tgl_dikembalikan = '$tgl_dikembalikan' WHERE id_detail = '$id_detail'";
   mysqli_query($conn, $query);
 
   // update jumlah buku
   $jumlah_buku = mysqli_query($conn, "SELECT jumlah FROM buku WHERE id_buku = '$id_buku'");
   $jumlah_buku = mysqli_fetch_assoc($jumlah_buku);
   $jumlah_buku = $jumlah_buku['jumlah'] + 1;
+  $sql = "UPDATE buku SET jumlah = '$jumlah_buku' WHERE id_buku = '$id_buku'";
+  mysqli_query($conn, $sql);
+
+  return mysqli_affected_rows($conn);
+}
+
+// pinjam kembali
+function pinjamKembali($data){
+  global $conn;
+
+  $id_detail = $data['id_detail'];
+  $id_peminjam = $data['id_peminjam'];
+  $id_buku = $data['id_buku'];
+  $tgl_sekarang = $data['tgl_sekarang'];
+
+  // tambah 7 hari tanggal sekarang
+  $tgl_kembali = date('Y-m-d', strtotime($tgl_sekarang. ' + 7 days'));
+
+  // cek jumlah buku
+  $cek_jumlah = mysqli_query($conn, "SELECT jumlah FROM buku WHERE id_buku = '$id_buku'");
+  $jumlah_buku = mysqli_fetch_assoc($cek_jumlah);
+  if($jumlah_buku['jumlah'] == 0) {
+    echo "<script>
+            alert('stok buku habis');
+          </script>";
+    return false;
+  }
+
+  // update detail peminjam
+  $query = "UPDATE detail_peminjam SET tgl_pinjam = '$tgl_sekarang', tgl_kembali = '$tgl_kembali', status = 'pinjam' WHERE id_detail = '$id_detail' AND id_peminjam = '$id_peminjam'";
+  mysqli_query($conn, $query);
+
+  // update jumlah buku
+  $jumlah_buku = mysqli_query($conn, "SELECT jumlah FROM buku WHERE id_buku = '$id_buku'");
+  $jumlah_buku = mysqli_fetch_assoc($jumlah_buku);
+  $jumlah_buku = $jumlah_buku['jumlah'] - 1;
   $sql = "UPDATE buku SET jumlah = '$jumlah_buku' WHERE id_buku = '$id_buku'";
   mysqli_query($conn, $sql);
 
@@ -887,6 +924,17 @@ function ubahKategori($data) {
             ";
   mysqli_query($conn, $query);
   mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
+
+// hapus detail
+function hapusDetail($id) {
+  global $conn;
+
+  // hapus data
+  $query = "DELETE FROM detail_pinjam WHERE id_detail = $id";
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
+
   return mysqli_affected_rows($conn);
 }
 ?>
