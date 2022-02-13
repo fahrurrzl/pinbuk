@@ -4,6 +4,7 @@
       <div class="content">
         <h3>find your favorite <span class="line-down">books</span></h3>
         <p class="p-home">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim accusamus iure saepe non eos maiores hic illo est sed nesciunt!</p>
+        <p style="margin-bottom: 1rem;"><a href="?page=home&aksi=content">selengkapnya</a></p>
         <a href="?page=home#books" class="btn">get started</a>
       </div>
 
@@ -25,6 +26,7 @@
         } else { foreach($buku_terbaru as $b) : ?>
           <div class="swiper-slide">
             <div class="card-home">
+              <h3 class="new">baru</h3>
               <div class="img">
                 <img src="admin/img/<?= $b['sampul'] ?>" alt="Sampul" />
               </div>
@@ -95,6 +97,7 @@
         <div class="content">
           <h3>Why Should You Read a <span class="line-down">Books?</span></h3>
           <p class="p-home">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim accusamus iure saepe non eos maiores hic illo est sed nesciunt!</p>
+          <p style="margin-bottom: 1rem;"><a href="?page=home&aksi=content">selengkapnya</a></p>
           <a href="" class="btn">get started</a>
         </div>
       </div>
@@ -107,6 +110,7 @@
       <div class="content">
         <h3><span class="line-down">sign up</span> <span class="lower-font">and</span> get started to reading</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab obcaecati rerum nostrum exercitationem, nisi excepturi debitis cupiditate provident voluptate temporibus ratione sunt quidem eos minima quia. Nihil voluptatibus doloribus dolores!</p>
+        <p style="margin-bottom: 1rem;"><a href="?page=home&aksi=content">selengkapnya</a></p>
         <a href="login.php" class="btn">get started</a>
         
       </div>

@@ -101,6 +101,7 @@ if(isset($_POST['cari'])){
         <button class="searchBtn" name="cari"><i class="uil uil-search"></i></button>
       </form>
 
+      <?php if(isset($_SESSION['login'])) { ?>
       <ul class="profil-container">
         <li class="profil-wrapper">
           <a href="#" class="profil"><i class="uil uil-user-circle"></i> </a>
@@ -117,6 +118,9 @@ if(isset($_POST['cari'])){
           </ul>
         </li>
       </ul>
+      <?php } else {
+        echo "<a href='login.php' class='btn'>login / registrasi</a>";
+      } ?>
     </header>
     <!-- header end -->
 
@@ -129,6 +133,8 @@ if(isset($_POST['cari'])){
           if($page == 'home') {
             if ($aksi == 'detail') {
               include 'page/detail-card.php';
+            } elseif($aksi == 'content'){
+              include 'page/content.php';
             } else {
               include 'page/home.php';
             }

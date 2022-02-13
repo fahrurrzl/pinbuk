@@ -427,6 +427,16 @@ section {
   color: #a4a1ac;
 }
 
+p a {
+  display: inline-block;
+}
+
+p:hover a {
+  font-style: italic;
+  margin-right: 0.2rem;
+  color: #a4a1ac;
+}
+
 .home {
   min-height: 100vh;
   display: -webkit-box;
@@ -477,6 +487,18 @@ section {
           justify-content: space-between;
   gap: 1rem;
   padding: 0.5rem;
+  position: relative;
+}
+
+.home .swiper .card-home .new {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0 0.3rem 0.3rem 0;
+  background: #2a2438;
+  z-index: 2;
+  color: #dbd8e3;
 }
 
 .home .swiper .card-home .img {

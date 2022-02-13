@@ -396,6 +396,17 @@ section {
   }
 }
 
+p {
+  a {
+    display: inline-block;
+  }
+  &:hover a {
+    font-style: italic;
+    margin-right: 0.2rem;
+    color: $darkWhite;
+  }
+}
+
 .home {
   min-height: 100vh;
   display: flex;
@@ -425,6 +436,17 @@ section {
       justify-content: space-between;
       gap: 1rem;
       padding: 0.5rem;
+      position: relative;
+      .new {
+        position: absolute;
+        top: 5%;
+        left: 0;
+        padding: 0.3rem 0.5rem;
+        border-radius: 0 0.3rem 0.3rem 0;
+        background: $black;
+        z-index: 2;
+        color: $white;
+      }
       .img {
         overflow: hidden;
         display: flex;
