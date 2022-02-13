@@ -3,6 +3,7 @@ require_once '../functions/functions.php';
 
 $pengarang = query("SELECT * FROM pengarang");
 $penerbit = query("SELECT * FROM penerbit");
+$kategori = query("SELECT * FROM kategori");
 
 // jika tidak ada id di url
 if (!isset($_GET['id'])) {
@@ -79,6 +80,16 @@ if(isset($_POST['ubah'])) {
                   <option>-- Pilih Nama Penerbit --</option>
                   <?php foreach($penerbit as $p) : ?>
                   <option value="<?= $p['id_penerbit'] ?>" <?php if( $buku['id_penerbit'] == $p['id_penerbit'] ) echo "selected"; ?> ><?= $p['nama_penerbit'] ?></option>
+                  <?php endforeach; ?>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Kategori</label>
+              <select class="form-control" name="id_kategori">
+                  <option>-- Pilih Kategori --</option>
+                  <?php foreach($kategori as $k) : ?>
+                  <option value="<?= $k['id_kategori'] ?>" <?php if( $buku['id_kategori'] == $k['id_kategori'] ) echo "selected"; ?> ><?= $k['nama_kategori'] ?></option>
                   <?php endforeach; ?>
               </select>
             </div>

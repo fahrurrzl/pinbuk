@@ -416,12 +416,14 @@ function cari($keyword) {
   $query = "SELECT * FROM buku
   INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
   INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit
+  INNER JOIN kategori ON buku.id_kategori = kategori.id_kategori
             WHERE
             judul LIKE '%$keyword%' OR
             tahun_terbit LIKE '%$keyword%' OR
             isbn LIKE '%$keyword%' OR
             nama_penerbit LIKE '%$keyword%' OR
-            nama_pengarang LIKE '%$keyword%'
+            nama_pengarang LIKE '%$keyword%' OR
+            nama_kategori LIKE '%$keyword%'
             ";
   return query($query);
 }
@@ -484,11 +486,11 @@ function tambahBuku($data) {
 
   $judul = htmlspecialchars($data['judul']);
   $tahun_terbit = htmlspecialchars($data['tahun_terbit']);
-  // $sampul = htmlspecialchars($data['sampul']);
   $isbn = htmlspecialchars($data['isbn']);
   $sinopsis = htmlspecialchars($data['sinopsis']);
   $id_penerbit = htmlspecialchars($data['id_penerbit']);
   $id_pengarang = htmlspecialchars($data['id_pengarang']);
+  $id_kategori = htmlspecialchars($data['id_kategori']);
   $jumlah = htmlspecialchars($data['jumlah']);
 
   $poto = uploadSampul();
@@ -497,7 +499,7 @@ function tambahBuku($data) {
   }
 
   // cek jika input ada yang kosong
-  if($judul == '' || $tahun_terbit == '' || $poto == '' || $isbn == '' || $sinopsis == '' || $id_penerbit == '' || $id_pengarang == '' || $jumlah == '') {
+  if($judul == '' || $tahun_terbit == '' || $poto == '' || $isbn == '' || $sinopsis == '' || $id_penerbit == '' || $id_pengarang == '' || $id_kategori == '' || $jumlah == '') {
     echo "<script>
             alert('tidak boleh ada yang kosong');
           </script>";
@@ -516,7 +518,7 @@ function tambahBuku($data) {
   // tambah data
   $query = "INSERT INTO buku
             VALUES
-            ('', '$judul', '$tahun_terbit', '$poto', '$isbn', '$sinopsis', '$id_penerbit', '$id_pengarang', '$jumlah')
+            ('', '$judul', '$tahun_terbit', '$poto', '$isbn', '$sinopsis', '$id_penerbit', '$id_pengarang', '$id_kategori', '$jumlah')
             ";
   mysqli_query($conn, $query);
 
@@ -550,6 +552,7 @@ function ubahBuku($data) {
   $sinopsis = htmlspecialchars($data['sinopsis']);
   $id_penerbit = htmlspecialchars($data['id_penerbit']);
   $id_pengarang = htmlspecialchars($data['id_pengarang']);
+  $id_kategori = htmlspecialchars($data['id_kategori']);
   $jumlah = htmlspecialchars($data['jumlah']);
   $potoLama = htmlspecialchars($data['potoLama']);
 
@@ -563,7 +566,7 @@ function ubahBuku($data) {
   }
 
   // cek jika input ada yang kosong
-  if($judul == '' || $tahun_terbit == '' || $poto == '' || $isbn == '' || $sinopsis == '' || $id_penerbit == '' || $id_pengarang == '' || $jumlah == '') {
+  if($judul == '' || $tahun_terbit == '' || $poto == '' || $isbn == '' || $sinopsis == '' || $id_penerbit == '' || $id_pengarang == '' || $id_kategori == '' || $jumlah == '') {
     echo "<script>
             alert('tidak boleh ada yang kosong');
           </script>";
@@ -579,6 +582,7 @@ function ubahBuku($data) {
             sinopsis = '$sinopsis',
             id_penerbit = '$id_penerbit',
             id_pengarang = '$id_pengarang',
+            id_kategori = '$id_kategori',
             jumlah = '$jumlah'
             WHERE id_buku = '$id_buku'
             ";

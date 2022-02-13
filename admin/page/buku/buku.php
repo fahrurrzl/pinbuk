@@ -3,7 +3,9 @@ require_once '../functions/functions.php';
 
 @$buku = query("SELECT * FROM buku
 INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
-INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit ORDER BY id_buku DESC");
+INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit
+INNER JOIN kategori ON buku.id_kategori = kategori.id_kategori
+ORDER BY id_buku DESC");
 ?>
 
 <!-- Begin Page Content -->
@@ -28,6 +30,7 @@ INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit ORDER BY id_buku 
             <th>Penerbit</th>
             <th>ISBN</th>
             <th>Tahun Terbit</th>
+            <th>Kategori</th>
             <th>Jumlah</th>
             <th>aksi</th>
           </tr>
@@ -40,6 +43,7 @@ INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit ORDER BY id_buku 
             <th>Penerbit</th>
             <th>ISBN</th>
             <th>Tahun Terbit</th>
+            <th>Kategori</th>
             <th>Jumlah</th>
             <th>aksi</th>
           </tr>
@@ -56,6 +60,7 @@ INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit ORDER BY id_buku 
             <td><?= $b['nama_penerbit']; ?></td>
             <td><?= $b['isbn']; ?></td>
             <td><?= $b['tahun_terbit']; ?></td>
+            <td><?= $b['nama_kategori']; ?></td>
             <td><?= $b['jumlah']; ?></td>
             <td>
               <a href="?page=buku&aksi=ubah&id=<?= $b['id_buku']; ?>" class="btn btn-success btn-sm">edit</a>

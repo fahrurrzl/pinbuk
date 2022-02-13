@@ -3,6 +3,7 @@ require_once '../functions/functions.php';
 
 $pengarang = query("SELECT * FROM pengarang");
 $penerbit = query("SELECT * FROM penerbit");
+$kategori = query("SELECT * FROM kategori");
 
 // tombol simpan di klik
 if(isset($_POST['simpan'])) {
@@ -63,6 +64,16 @@ if(isset($_POST['simpan'])) {
                   <option>-- Pilih Nama Penerbit --</option>
                   <?php foreach($penerbit as $p) : ?>
                   <option value="<?= $p['id_penerbit'] ?>"><?= $p['nama_penerbit'] ?></option>
+                  <?php endforeach; ?>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Kategori</label>
+              <select class="form-control" name="id_kategori">
+                  <option>-- Pilih Kategori --</option>
+                  <?php foreach($kategori as $k) : ?>
+                  <option value="<?= $k['id_kategori'] ?>"><?= $k['nama_kategori'] ?></option>
                   <?php endforeach; ?>
               </select>
             </div>

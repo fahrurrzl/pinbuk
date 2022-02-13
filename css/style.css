@@ -147,7 +147,7 @@ input:disabled {
 }
 
 .line-down {
-  font-size: 2.875rem;
+  font-size: 4.3rem;
   color: #d6d6d6;
   font-weight: bold;
   position: relative;
@@ -401,7 +401,7 @@ section {
 }
 
 .home .content h3 {
-  font-size: 2.875rem;
+  font-size: 4.3rem;
   font-weight: bold;
   color: #a3a09d;
 }
@@ -613,8 +613,8 @@ section {
 
 .about .content-container .img {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 35rem;
-          flex: 1 1 35rem;
+      -ms-flex: 1 1 25rem;
+          flex: 1 1 25rem;
 }
 
 .about .content-container .img img {
@@ -623,13 +623,14 @@ section {
 
 .about .content-container .content {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 35rem;
-          flex: 1 1 35rem;
+      -ms-flex: 1 1 25rem;
+          flex: 1 1 25rem;
 }
 
 .about .content-container .content h3 {
-  font-size: 2.875rem;
+  font-size: 4.3rem;
   color: #a3a09d;
+  text-transform: none;
 }
 
 .about .content-container .content p {
@@ -656,7 +657,7 @@ section {
 }
 
 .cta .content h3 {
-  font-size: 2.875rem;
+  font-size: 4.3rem;
   z-index: 2;
   color: #a3a09d;
 }
@@ -666,7 +667,7 @@ section {
 }
 
 .cta .content h3 .lower-font {
-  font-size: 2.875rem;
+  font-size: 4.3rem;
 }
 
 .cta .content p {
@@ -1490,7 +1491,7 @@ footer .copyright a:hover {
     width: 50%;
   }
   .modal .modal-box .modal-content .content h3 {
-    font-size: 2rem;
+    font-size: 4.3rem;
     margin-bottom: 0.5rem;
   }
   .modal .modal-box .modal-content .content p {

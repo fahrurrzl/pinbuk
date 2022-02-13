@@ -93,7 +93,7 @@
           <img src="img/about.png" alt="" />
         </div>
         <div class="content">
-          <h3>Why Should You Read <span class="lower-font">a</span> <span class="line-down">Books?</span></h3>
+          <h3>Why Should You Read a <span class="line-down">Books?</span></h3>
           <p class="p-home">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim accusamus iure saepe non eos maiores hic illo est sed nesciunt!</p>
           <a href="" class="btn">get started</a>
         </div>
@@ -106,9 +106,9 @@
     <section class="cta" id="cta">
       <div class="content">
         <h3><span class="line-down">sign up</span> <span class="lower-font">and</span> get started to reading</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, enim?</p>
-        <a href="login.php" class="btn">registrasi</a>
-        <p class="alredy">alredy have an account? <a href="login.php">login</a></p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab obcaecati rerum nostrum exercitationem, nisi excepturi debitis cupiditate provident voluptate temporibus ratione sunt quidem eos minima quia. Nihil voluptatibus doloribus dolores!</p>
+        <a href="login.php" class="btn">get started</a>
+        
       </div>
       <div class="img">
         <img src="img/cta.png" alt="cta" />

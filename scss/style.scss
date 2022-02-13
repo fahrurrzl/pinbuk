@@ -159,7 +159,7 @@ input:disabled {
 
 // line down
 .line-down {
-  font-size: 2.875rem;
+  font-size: 4.3rem;
   color: $white;
   font-weight: bold;
   position: relative;
@@ -368,7 +368,7 @@ section {
   .content {
     width: 50%;
     h3 {
-      font-size: 2.875rem;
+      font-size: 4.3rem;
       font-weight: bold;
       color: $darkWhite;
     }
@@ -527,16 +527,17 @@ section {
     align-items: center;
     gap: 2rem;
     .img {
-      flex: 1 1 35rem;
+      flex: 1 1 25rem;
       img {
         width: 100%;
       }
     }
     .content {
-      flex: 1 1 35rem;
+      flex: 1 1 25rem;
       h3 {
-        font-size: 2.875rem;
+        font-size: 4.3rem;
         color: $darkWhite;
+        text-transform: none;
       }
       p {
         margin-bottom: 1rem;
@@ -554,14 +555,14 @@ section {
   .content {
     flex: 1 1 35rem;
     h3 {
-      font-size: 2.875rem;
+      font-size: 4.3rem;
       z-index: 2;
       color: $darkWhite;
       .line-down {
         z-index: 1;
       }
       .lower-font {
-        font-size: 2.875rem;
+        font-size: 4.3rem;
       }
     }
     p {
@@ -1200,7 +1201,7 @@ footer {
         }
         .content {
           h3 {
-            font-size: 2rem;
+            font-size: 4.3rem;
             margin-bottom: 0.5rem;
           }
           p {
