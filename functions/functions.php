@@ -822,4 +822,71 @@ function ubahAdmin($data) {
   mysqli_error($conn);
   return mysqli_affected_rows($conn);
 }
+
+function tambahKategori($data) {
+  global $conn;
+
+  $nama_kategori = htmlspecialchars($data['nama_kategori']);
+
+  // cek jika input ada yang kosong
+  if($nama_kategori == '') {
+    echo "<script>
+            alert('data tidak boleh kosong');
+          </script>";
+    return false;
+  }
+
+  // cek nama kategori
+  $query = "SELECT * FROM kategori WHERE nama_kategori = '$nama_kategori'";
+  $hasil = mysqli_query($conn, $query);
+  if(mysqli_num_rows($hasil) > 0) {
+    echo "<script>
+            alert('kategori sudah ada');
+          </script>";
+    return false;
+  }
+
+  // tambah data
+  $query = "INSERT INTO kategori
+            VALUES
+            ('', '$nama_kategori')
+            ";
+  mysqli_query($conn, $query);
+  mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
+
+function hapusKategori($id){
+  global $conn;
+
+  // hapus data
+  $query = "DELETE FROM kategori WHERE id_kategori = $id";
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+  return mysqli_affected_rows($conn);
+}
+
+function ubahKategori($data) {
+  global $conn;
+
+  $id_kategori = $data['id_kategori'];
+  $nama_kategori = htmlspecialchars($data['nama_kategori']);
+
+  // cek jika input ada yang kosong
+  if($nama_kategori == '') {
+    echo "<script>
+            alert('data tidak boleh kosong');
+          </script>";
+    return false;
+  }
+
+  // ubah data
+  $query = "UPDATE kategori SET
+            nama_kategori = '$nama_kategori'
+            WHERE id_kategori = '$id_kategori'
+            ";
+  mysqli_query($conn, $query);
+  mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
 ?>

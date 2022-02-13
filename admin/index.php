@@ -84,6 +84,7 @@ $admin = mysqli_fetch_assoc($hasil);
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="?page=buku">Buku</a>
+            <a class="collapse-item" href="?page=kategori">Kategoti</a>
             <a class="collapse-item" href="?page=pengarang">Pengarang</a>
             <a class="collapse-item" href="?page=penerbit">Penerbit</a>
           </div>
@@ -250,6 +251,16 @@ $admin = mysqli_fetch_assoc($hasil);
                   include "page/admin/hapus.php";
                 } else {
                   include "page/admin/admin.php";
+                }
+              } elseif($page == 'kategori'){
+                if($aksi == 'tambah'){
+                  include "page/kategori/tambah.php";
+                } elseif($aksi == 'ubah'){
+                  include "page/kategori/ubah.php";
+                } elseif($aksi == 'hapus'){
+                  include "page/kategori/hapus.php";
+                } else {
+                  include "page/kategori/kategori.php";
                 }
               }
             } else {
