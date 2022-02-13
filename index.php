@@ -8,13 +8,13 @@ if(isset($_SESSION['login'])) {
 require 'functions/functions.php';
 
 // buku teratas
-$buku_terbatu = query("SELECT * FROM buku
+@$buku_terbaru = query("SELECT * FROM buku
 INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
 INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit
 ORDER BY id_buku DESC LIMIT 4");
 
 // menampilkan semua buku
-$buku = query("SELECT * FROM buku
+@$buku = query("SELECT * FROM buku
 INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
 INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit");
 

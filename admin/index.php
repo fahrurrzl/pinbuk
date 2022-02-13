@@ -29,7 +29,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -41,7 +41,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -63,8 +63,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="?page=buku">Buku</a>
-            <a class="collapse-item" href="#">Pengarang</a>
-            <a class="collapse-item" href="#">Penerbit</a>
+            <a class="collapse-item" href="?page=pengarang">Pengarang</a>
+            <a class="collapse-item" href="?page=penerbit">Penerbit</a>
           </div>
         </div>
       </li>
@@ -84,7 +84,7 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">peminjam</a>
+            <a class="collapse-item" href="?page=peminjam">peminjam</a>
           </div>
         </div>
       </li>
@@ -198,12 +198,44 @@
               } elseif($page == 'buku'){
                 if($aksi == 'tambah'){
                   include "page/buku/tambah.php";
-                } else if($aksi == 'edit'){
-                  include "page/buku/edit.php";
+                } else if($aksi == 'ubah'){
+                  include "page/buku/ubah.php";
                 } else if($aksi == 'hapus'){
                   include "page/buku/hapus.php";
                 } else {
                   include "page/buku/buku.php";
+                }
+              } elseif($page == 'pengarang'){
+                if($aksi == 'tambah') {
+                  include "page/pengarang/tambah.php";
+                } elseif($aksi == 'ubah') {
+                  include "page/pengarang/ubah.php";
+                } elseif($aksi == 'hapus') {
+                  include "page/pengarang/hapus.php";
+                } else {
+                  include "page/pengarang/pengarang.php";
+                }
+              } elseif($page == 'penerbit') {
+                if($aksi == 'tambah') {
+                  include "page/penerbit/tambah.php";
+                } elseif($aksi == 'ubah') {
+                  include "page/penerbit/ubah.php";
+                } elseif ($aksi == 'hapus') {
+                  include "page/penerbit/hapus.php";
+                } else {
+                  include "page/penerbit/penerbit.php";
+                }
+              } elseif($page == 'peminjam') {
+                if($aksi == 'tambah'){
+                  include "page/peminjam/tambah.php";
+                } elseif($aksi == 'ubah'){
+                  include "page/peminjam/ubah.php";
+                } elseif($aksi == 'hapus'){
+                  include "page/peminjam/hapus.php";
+                } elseif($aksi == 'ubahPass')  {
+                  include "page/peminjam/ubahPass.php";
+                } else {
+                  include "page/peminjam/peminjam.php";
                 }
               }
             } else {
@@ -273,6 +305,9 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
+
+  <!-- my js -->
+  <script src="../js/script.js"></script>
 
 </body>
 

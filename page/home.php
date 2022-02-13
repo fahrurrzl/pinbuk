@@ -9,11 +9,24 @@
 
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-        <?php foreach($buku_terbatu as $b) : ?>
+        <?php 
+        if(empty($buku_terbaru)) {
+          echo "<div class='swiper-slide'>
+          <div class='slide-box'>
+            <div class='slide-img'>
+              <img src='../img/dasar.jpg' alt='sampul' />
+            </div>
+            <div class='slide-detail'>
+              <h3>No books</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quis.</p>
+            </div>
+          </div>
+          </div>";
+        } else { foreach($buku_terbaru as $b) : ?>
           <div class="swiper-slide">
             <div class="card-home">
               <div class="img">
-                <img src="img/dasar.jpg" alt="Buku" />
+                <img src="admin/img/<?= $b['sampul'] ?>" alt="Sampul" />
               </div>
               <div class="content">
                 <h3 class="title"><?= $b['judul']; ?></h3>
@@ -25,7 +38,7 @@
               </div>
             </div>
           </div>
-          <?php endforeach; ?>
+          <?php endforeach; } ?>
         </div>
       </div>
     </section>
@@ -38,12 +51,17 @@
       </div>
       <!-- slider -->
       <div class="slider">
-        <?php foreach($buku as $sb) : ?>
+        <?php 
+        if(empty($buku)) {
+          echo "<div class='slider-kosong'>
+          <h2>Buku kosong</h2>
+          </div>";
+        } else { foreach($buku as $sb) : ?>
         <div>
           <!-- box slider -->
           <div class="box">
             <div class="slide-img">
-              <img src="img/dasar.jpg" alt="Books" />
+              <img src="admin/img/<?= $sb['sampul']; ?>" alt="Sampul" />
             </div>
             <!-- detail box -->
             <div class="detail-box">
@@ -60,7 +78,7 @@
             </div>
           </div>
         </div>
-        <?php endforeach; ?>
+        <?php endforeach; } ?>
       </div>
     </section>
     <!-- books end -->

@@ -28,7 +28,6 @@ function registrasi($data){
   $username = strtolower(stripslashes($data['username']));
   $password = mysqli_real_escape_string($conn, $data['password']);
   $password_konfirmasi = mysqli_real_escape_string($conn, $data['password_konfirmasi']);
-  $level = htmlspecialchars($data['level']);
   $poto = htmlspecialchars($data['poto']);
 
   // ubah format tanggal
@@ -57,7 +56,7 @@ function registrasi($data){
   // tambahkan user baru
   $query = "INSERT INTO peminjam
             VALUES
-            ('', '$nama_peminjam', '$tempat_lahir', '$tl', '$jk', '$tlp', '$email', '$alamat', '$username', '$password', '$level', '$poto')";
+            ('', '$nama_peminjam', '$tempat_lahir', '$tl', '$jk', '$tlp', '$email', '$alamat', '$username', '$password', '$poto')";
   mysqli_query($conn, $query);
   
   return mysqli_affected_rows($conn);
@@ -197,6 +196,97 @@ function upload(){
   return $nama_file_baru;
 }
 
+// upload untuk admin
+function uploadAdmin(){
+  $nama_file = $_FILES['poto']['name'];
+  $tipe_file = $_FILES['poto']['type'];
+  $ukuran_file = $_FILES['poto']['size'];
+  $tmp_file = $_FILES['poto']['tmp_name'];
+  $error = $_FILES['poto']['error'];
+
+  // ketika tidak ada gambara yang dipilih
+  if($error == 4) {
+    return 'nopoto.jpg';
+  }
+
+  // cek ekstensi file
+  $daftar_gambar = ['jpg', 'jpeg', 'png'];
+  $ekstensi_file = explode('.', $nama_file);
+  $ekstensi_file = strtolower(end($ekstensi_file));
+
+  if(!in_array($ekstensi_file, $daftar_gambar)){
+    echo "<script>
+            alert('yang anda pilih bukan gambar');
+          </script>";
+    return false;
+  }
+
+  // cek tipe file
+  if($tipe_file != 'image/jpeg' && $tipe_file != 'image/png') {
+    echo "<script>
+            alert('yang anda pilih bukan gambar');
+          </script>";
+    return false;
+  }
+
+  // cek ukuran file lebih dari 3mb
+  if($ukuran_file > 3000000) {
+    echo "<script>
+            alert('ukuran gambar terlalu besar');
+          </script>";
+    return false;
+  }
+
+  // lolos cek
+  // generate nama file baru
+  $nama_file_baru = uniqid();
+  $nama_file_baru .= '.';
+  $nama_file_baru .= $ekstensi_file;
+
+  // upload file
+  move_uploaded_file($tmp_file, '../img/' . $nama_file_baru);
+  return $nama_file_baru;
+}
+
+function ubahForAdmin($data) {
+  global $conn;
+
+  $id_peminjam = $data['id_peminjam'];
+  $nama_peminjam = htmlspecialchars($data['nama_peminjam']);
+  $tempat_lahir = htmlspecialchars($data['tempat_lahir']);
+  $tl = htmlspecialchars($data['tl']);
+  $jk = htmlspecialchars($data['jk']);
+  $tlp = htmlspecialchars($data['tlp']);
+  $email = htmlspecialchars($data['email']);
+  $alamat = htmlspecialchars($data['alamat']);
+  $potoLama = htmlspecialchars($data['potoLama']);
+
+  $poto = uploadAdmin();
+  if(!$poto) {
+    return false;
+  }
+
+  if($poto == 'nopoto.jpg') {
+    $poto = $potoLama;
+  }
+
+  $query = "UPDATE peminjam SET
+            nama_peminjam = '$nama_peminjam',
+            tempat_lahir = '$tempat_lahir',
+            tl = '$tl',
+            jk = '$jk',
+            tlp = '$tlp',
+            email = '$email',
+            alamat = '$alamat',
+            poto = '$poto'
+            WHERE id_peminjam = '$id_peminjam'
+            ";
+
+  mysqli_query($conn, $query);
+  mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
+
 // ubah data peminjam
 function ubah($data) {
   global $conn;
@@ -233,7 +323,7 @@ function ubah($data) {
             ";
 
   mysqli_query($conn, $query);
-  mysqli_errno($conn);
+  mysqli_error($conn);
   return mysqli_affected_rows($conn);
 }
 
@@ -290,6 +380,57 @@ function cari($keyword) {
 }
 
 // halaman admin
+// upload sampul
+function uploadSampul(){
+  $nama_file = $_FILES['poto']['name'];
+  $tipe_file = $_FILES['poto']['type'];
+  $ukuran_file = $_FILES['poto']['size'];
+  $tmp_file = $_FILES['poto']['tmp_name'];
+  $error = $_FILES['poto']['error'];
+
+  // ketika tidak ada gambara yang dipilih
+  if($error == 4) {
+    return 'nosampul.jpg';
+  }
+
+  // cek ekstensi file
+  $daftar_gambar = ['jpg', 'jpeg', 'png'];
+  $ekstensi_file = explode('.', $nama_file);
+  $ekstensi_file = strtolower(end($ekstensi_file));
+
+  if(!in_array($ekstensi_file, $daftar_gambar)){
+    echo "<script>
+            alert('yang anda pilih bukan gambar');
+          </script>";
+    return false;
+  }
+
+  // cek tipe file
+  if($tipe_file != 'image/jpeg' && $tipe_file != 'image/png') {
+    echo "<script>
+            alert('yang anda pilih bukan gambar');
+          </script>";
+    return false;
+  }
+
+  // cek ukuran file lebih dari 3mb
+  if($ukuran_file > 3000000) {
+    echo "<script>
+            alert('ukuran gambar terlalu besar');
+          </script>";
+    return false;
+  }
+
+  // lolos cek
+  // generate nama file baru
+  $nama_file_baru = uniqid();
+  $nama_file_baru .= '.';
+  $nama_file_baru .= $ekstensi_file;
+
+  // upload file
+  move_uploaded_file($tmp_file, 'img/' . $nama_file_baru);
+  return $nama_file_baru;
+}
 // tambah buku
 function tambahBuku($data) {
   global $conn;
@@ -303,7 +444,7 @@ function tambahBuku($data) {
   $id_pengarang = htmlspecialchars($data['id_pengarang']);
   $jumlah = htmlspecialchars($data['jumlah']);
 
-  $poto = upload();
+  $poto = uploadSampul();
   if(!$poto) {
     return false;
   }
@@ -312,6 +453,15 @@ function tambahBuku($data) {
   if($judul == '' || $tahun_terbit == '' || $poto == '' || $isbn == '' || $sinopsis == '' || $id_penerbit == '' || $id_pengarang == '' || $jumlah == '') {
     echo "<script>
             alert('tidak boleh ada yang kosong');
+          </script>";
+    return false;
+  }
+
+  // cek jika isbn sama
+  $result = mysqli_query($conn, "SELECT isbn FROM buku WHERE isbn = '$isbn'");
+  if(mysqli_fetch_assoc($result)) {
+    echo "<script>
+            alert('isbn sudah ada');
           </script>";
     return false;
   }
@@ -326,4 +476,246 @@ function tambahBuku($data) {
   return mysqli_affected_rows($conn);
 }
 
+// hapus buku
+function hapusBuku($id){
+  global $conn;
+
+  $buku = query("SELECT * FROM buku WHERE id_buku = $id")[0];
+  if($buku['sampul'] != 'nosampul.jpg') {
+    unlink('img/' . $buku['sampul']);
+  }
+  
+  // hapus data
+  $query = "DELETE FROM buku WHERE id_buku = $id";
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+  return mysqli_affected_rows($conn);
+}
+
+// ubah buku
+function ubahBuku($data) {
+  global $conn;
+
+  $id_buku = $data['id_buku'];
+  $judul = htmlspecialchars($data['judul']);
+  $tahun_terbit = htmlspecialchars($data['tahun_terbit']);
+  $isbn = htmlspecialchars($data['isbn']);
+  $sinopsis = htmlspecialchars($data['sinopsis']);
+  $id_penerbit = htmlspecialchars($data['id_penerbit']);
+  $id_pengarang = htmlspecialchars($data['id_pengarang']);
+  $jumlah = htmlspecialchars($data['jumlah']);
+  $potoLama = htmlspecialchars($data['potoLama']);
+
+  $poto = uploadSampul();
+  if(!$poto) {
+    return false;
+  }
+  
+  if($poto == 'nosampul.jpg') {
+    $poto = $potoLama;
+  }
+
+  // cek jika input ada yang kosong
+  if($judul == '' || $tahun_terbit == '' || $poto == '' || $isbn == '' || $sinopsis == '' || $id_penerbit == '' || $id_pengarang == '' || $jumlah == '') {
+    echo "<script>
+            alert('tidak boleh ada yang kosong');
+          </script>";
+    return false;
+  }
+
+  // ubah data
+  $query = "UPDATE buku SET
+            judul = '$judul',
+            tahun_terbit = '$tahun_terbit',
+            sampul = '$poto',
+            isbn = '$isbn',
+            sinopsis = '$sinopsis',
+            id_penerbit = '$id_penerbit',
+            id_pengarang = '$id_pengarang',
+            jumlah = '$jumlah'
+            WHERE id_buku = '$id_buku'
+            ";
+  mysqli_query($conn, $query);
+  mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
+
+// tambah pengarang
+function tambahPengarang($data) {
+  global $conn;
+
+  $nama_pengarang = htmlspecialchars($data['nama_pengarang']);
+  $tempat_lahir = htmlspecialchars($data['tempat_lahir']);
+  $tl = htmlspecialchars($data['tl']);
+  $jk = htmlspecialchars($data['jk']);
+  $tlp = htmlspecialchars($data['tlp']);
+  $alamat = htmlspecialchars($data['alamat']);
+
+  // upload poto
+  $poto = upload();
+  if(!$poto) {
+    return false;
+  }
+
+  // cek jika input ada yang kosong
+  if($nama_pengarang == '' || $tempat_lahir == '' || $tl == '' || $jk == '' || $tlp == '' || $alamat == '') {
+    echo "<script>
+            alert('tidak boleh ada yang kosong');
+          </script>";
+    return false;
+  }
+
+  // tambah data
+  $query = "INSERT INTO pengarang
+            VALUES
+            ('', '$nama_pengarang', '$tempat_lahir', '$tl', '$jk', '$tlp', '$alamat', '$poto')
+            ";
+  mysqli_query($conn, $query);
+  mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
+
+// hapus pengaran
+// hapus buku
+function hapusPengarang($id){
+  global $conn;
+
+  $pengarang = query("SELECT * FROM pengarang WHERE id_pengarang = $id")[0];
+  if($pengarang['poto'] != 'nopoto.jpg') {
+    unlink('img/' . $pengarang['poto']);
+  }
+  
+  // hapus data
+  $query = "DELETE FROM pengarang WHERE id_pengarang = $id";
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+  return mysqli_affected_rows($conn);
+}
+
+// ubah pengarang
+function ubahPengarang($data) {
+  global $conn;
+
+  $id_pengarang = $data['id_pengarang'];
+  $nama_pengarang = htmlspecialchars($data['nama_pengarang']);
+  $tempat_lahir = htmlspecialchars($data['tempat_lahir']);
+  $tl = htmlspecialchars($data['tl']);
+  $jk = htmlspecialchars($data['jk']);
+  $tlp = htmlspecialchars($data['tlp']);
+  $alamat = htmlspecialchars($data['alamat']);
+  $potoLama = htmlspecialchars($data['potoLama']);
+
+  $poto = upload();
+  if(!$poto) {
+    return false;
+  }
+  
+  if($poto == 'nopoto.jpg') {
+    $poto = $potoLama;
+  }
+
+  // cek jika input ada yang kosong
+  if($nama_pengarang == '' || $tempat_lahir == '' || $tl == '' || $jk == '' || $tlp == '' || $alamat == '') {
+    echo "<script>
+            alert('tidak boleh ada yang kosong');
+          </script>";
+    return false;
+  }
+
+  // ubah data
+  $query = "UPDATE pengarang SET
+            nama_pengarang = '$nama_pengarang',
+            tempat_lahir = '$tempat_lahir',
+            tl = '$tl',
+            jk = '$jk',
+            tlp = '$tlp',
+            alamat = '$alamat',
+            poto = '$poto'
+            WHERE id_pengarang = '$id_pengarang'
+            ";
+  mysqli_query($conn, $query);
+  mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
+
+// hapus penerbit
+function hapusPenerbit($id){
+  global $conn;
+
+  $penerbit = query("SELECT * FROM penerbit WHERE id_penerbit = $id")[0];
+  
+  // hapus data
+  $query = "DELETE FROM penerbit WHERE id_penerbit = $id";
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+  return mysqli_affected_rows($conn);
+}
+
+// tambah pernerbit
+function tambahPenerbit($data) {
+  global $conn;
+
+  $nama_penerbit = htmlspecialchars($data['nama_penerbit']);
+  $tlp = htmlspecialchars($data['tlp']);
+  $alamat = htmlspecialchars($data['alamat']);
+
+  // cek jika input ada yang kosong
+  if($nama_penerbit == '' || $tlp == '' || $alamat == '') {
+    echo "<script>
+            alert('tidak boleh ada yang kosong');
+          </script>";
+    return false;
+  }
+
+  // tambah data
+  $query = "INSERT INTO penerbit
+            VALUES
+            ('', '$nama_penerbit', '$tlp', '$alamat')
+            ";
+  mysqli_query($conn, $query);
+  mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
+
+// ubah penerbit
+function ubahPenerbit($data) {
+  global $conn;
+
+  $id_penerbit = $data['id_penerbit'];
+  $nama_penerbit = htmlspecialchars($data['nama_penerbit']);
+  $tlp = htmlspecialchars($data['tlp']);
+  $alamat = htmlspecialchars($data['alamat']);
+
+  // cek jika input ada yang kosong
+  if($nama_penerbit == '' || $tlp == '' || $alamat == '') {
+    echo "<script>
+            alert('tidak boleh ada yang kosong');
+          </script>";
+    return false;
+  }
+
+  // ubah data
+  $query = "UPDATE penerbit SET
+            nama_penerbit = '$nama_penerbit',
+            tlp = '$tlp',
+            alamat = '$alamat'
+            WHERE id_penerbit = '$id_penerbit'
+            ";
+  mysqli_query($conn, $query);
+  mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
+
+// hapus peminjam
+function hapusPeminjam($id){
+  global $conn;
+
+  $peminjam = query("SELECT * FROM peminjam WHERE id_peminjam = $id")[0];
+  
+  // hapus data
+  $query = "DELETE FROM peminjam WHERE id_peminjam = $id";
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+  return mysqli_affected_rows($conn);
+}
 ?>

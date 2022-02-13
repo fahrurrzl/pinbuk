@@ -397,6 +397,8 @@ section {
         img {
           border-radius: 0.5rem;
           filter: drop-shadow(1px 1px 0.5rem $lightBlack);
+          object-fit: cover;
+          width: 100%;
         }
       }
       .content {
@@ -472,10 +474,11 @@ section {
     .slide-img {
       overflow: hidden;
       border-radius: 0.5rem;
+      width: 100%;
       img {
         transform: scale(1.1);
         width: 100%;
-        object-fit: cover;
+        height: 100%;
         border-radius: 0.5rem;
         filter: drop-shadow(1px 1px 0.5rem $lightBlack);
       }

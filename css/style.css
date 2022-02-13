@@ -451,6 +451,9 @@ section {
   border-radius: 0.5rem;
   -webkit-filter: drop-shadow(1px 1px 0.5rem #7d7b75);
           filter: drop-shadow(1px 1px 0.5rem #7d7b75);
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
 }
 
 .home .swiper .card-home .content {
@@ -534,14 +537,14 @@ section {
 .books .box .slide-img {
   overflow: hidden;
   border-radius: 0.5rem;
+  width: 100%;
 }
 
 .books .box .slide-img img {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  height: 100%;
   border-radius: 0.5rem;
   -webkit-filter: drop-shadow(1px 1px 0.5rem #7d7b75);
           filter: drop-shadow(1px 1px 0.5rem #7d7b75);

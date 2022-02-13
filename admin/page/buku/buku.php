@@ -1,9 +1,9 @@
 <?php 
 require_once '../functions/functions.php';
 
-$buku = query("SELECT * FROM buku
+@$buku = query("SELECT * FROM buku
 INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
-INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit");
+INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit ORDER BY id_buku DESC");
 ?>
 
 <!-- Begin Page Content -->
@@ -45,7 +45,10 @@ INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit");
           </tr>
         </tfoot>
         <tbody>
-          <?php foreach($buku as $b) : ?>
+          <?php 
+          if(empty($buku)) {
+            echo "<tr><td colspan='7'><h1 style='text-align:center;'>Buku masih kosong</h1></td></tr>";
+          } else { foreach($buku as $b) : ?>
           <tr>
             <td><img src="img/<?= $b['sampul']; ?>" alt="" class="img-thumbnail"></td>
             <td><?= $b['judul']; ?></td>
@@ -55,11 +58,11 @@ INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit");
             <td><?= $b['tahun_terbit']; ?></td>
             <td><?= $b['jumlah']; ?></td>
             <td>
-              <a href="" class="btn btn-success btn-sm">edit</a>
-              <a href="" class="btn btn-danger btn-sm">hapus</a>
+              <a href="?page=buku&aksi=ubah&id=<?= $b['id_buku']; ?>" class="btn btn-success btn-sm">edit</a>
+              <a href="?page=buku&aksi=hapus&id=<?= $b['id_buku']; ?>" onclick="return confirm('Yakin ingin menghapus <?= $b['judul']; ?>')" class="btn btn-danger btn-sm">hapus</a>
             </td>
           </tr>
-          <?php endforeach; ?>
+          <?php endforeach; } ?>
         </tbody>
       </table>
     </div>
