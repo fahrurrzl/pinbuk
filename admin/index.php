@@ -87,6 +87,7 @@ $admin = mysqli_fetch_assoc($hasil);
             <a class="collapse-item" href="?page=kategori">Kategoti</a>
             <a class="collapse-item" href="?page=pengarang">Pengarang</a>
             <a class="collapse-item" href="?page=penerbit">Penerbit</a>
+            <a class="collapse-item" href="?page=buku&aksi=dipinjam">Buku yang dipinjam</a>
           </div>
         </div>
       </li>
@@ -207,6 +208,8 @@ $admin = mysqli_fetch_assoc($hasil);
                   include "page/buku/ubah.php";
                 } else if($aksi == 'hapus'){
                   include "page/buku/hapus.php";
+                } elseif($aksi == 'dipinjam') {
+                  include "page/buku/dipinjam.php";
                 } else {
                   include "page/buku/buku.php";
                 }

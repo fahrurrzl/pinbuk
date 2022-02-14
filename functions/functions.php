@@ -148,8 +148,7 @@ function pinjam($data) {
   // tambah data
   $query = "INSERT INTO detail_peminjam
             VALUES
-            ('', '$id_peminjam', '$id_buku', '$tgl_pinjam', '$tgl_kembali', '$status')
-            ";
+            ('', '$id_peminjam', '$id_buku', '$tgl_pinjam', '$tgl_kembali', '$status', '')";
   mysqli_query($conn, $query);
 
   // update jumlah buku
