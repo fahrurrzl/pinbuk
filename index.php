@@ -111,7 +111,8 @@ if(isset($_POST['cari'])){
               <img src="img/<?= $row['poto']; ?>" alt="" />
             </div>
             <div class="profil-name">
-              <h3><?= $row['nama_peminjam']; ?></h3>
+              <h3><a href="?page=detail-profil&id_peminjam=<?= $id_peminjam; ?>">
+              <?= $row['nama_peminjam']; ?> <i class="uil uil-angle-right"></i></a></h3>
               <p><?= $row['email']; ?></p>
             </div>
           </div>

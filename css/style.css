@@ -351,9 +351,22 @@ section {
   border-radius: 50%;
 }
 
-.header .profil-container .profil-wrapper .profil .profil-name h3,
-.header .profil-container .profil-wrapper .profil .profil-name p {
+.header .profil-container .profil-wrapper .profil .profil-name a,
+.header .profil-container .profil-wrapper .profil .profil-name p,
+.header .profil-container .profil-wrapper .profil .profil-name i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #2a2438;
+}
+
+.header .profil-container .profil-wrapper .profil .profil-name a:hover,
+.header .profil-container .profil-wrapper .profil .profil-name p:hover,
+.header .profil-container .profil-wrapper .profil .profil-name i:hover {
+  color: #5c5470;
 }
 
 .header .profil-container .profil-wrapper .profil .profil-name p {
@@ -366,7 +379,6 @@ section {
   bottom: 10%;
   right: 1%;
   width: 50%;
-  color: #2a2438;
 }
 
 .header .profil-container .profil-wrapper .logout a,
@@ -381,7 +393,7 @@ section {
 
 .header .profil-container .profil-wrapper .logout:hover,
 .header .profil-container .profil-wrapper .logout:hover i {
-  color: #a4a1ac;
+  color: #5c5470;
 }
 
 .header .profil-container:hover .profil-wrapper {

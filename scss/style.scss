@@ -330,9 +330,15 @@ section {
           }
         }
         .profil-name {
-          h3,
-          p {
+          a,
+          p,
+          i {
+            display: flex;
+            align-items: center;
             color: $black;
+            &:hover {
+              color: $grey;
+            }
           }
           p {
             font-size: 0.8rem;
@@ -345,7 +351,6 @@ section {
         bottom: 10%;
         right: 1%;
         width: 50%;
-        color: $black;
         a,
         i {
           font-weight: bold;
@@ -356,7 +361,7 @@ section {
         }
         &:hover,
         &:hover i {
-          color: $darkWhite;
+          color: $grey;
         }
       }
     }
@@ -365,64 +370,6 @@ section {
     }
   }
 
-  // .profil-container {
-  //   .profil-wrapper {
-  //     position: relative;
-  //     a i {
-  //       font-size: 2rem;
-  //       color: $white;
-  //       &:hover {
-  //         color: $darkWhite;
-  //       }
-  //     }
-  //     .profil-box {
-  //       position: absolute;
-  //       top: 2rem;
-  //       right: 0;
-  //       background: $white;
-  //       width: 20rem;
-  //       border-radius: 0.5rem;
-  //       padding: 0.6rem 1rem;
-  //       clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  //       li {
-  //         display: block;
-  //         float: left;
-  //         margin: 0.5rem;
-  //         height: 5rem;
-  //         margin-top: 0.5rem;
-  //         img {
-  //           margin-right: 0.3rem;
-  //           width: 3rem;
-  //           height: 3rem;
-  //           border-radius: 50%;
-  //           object-fit: cover;
-  //         }
-  //         .logout {
-  //           padding-top: 3.5rem;
-  //           i {
-  //             font-size: 1rem;
-  //             color: $black;
-  //           }
-  //           &:hover i {
-  //             color: $darkWhite;
-  //           }
-  //         }
-  //         a {
-  //           padding-top: 0.7rem;
-  //           color: $black;
-  //           font-weight: bold;
-  //           display: block;
-  //           &:hover {
-  //             color: $darkWhite;
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  //   &:hover .profil-box {
-  //     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  //   }
-  // }
   .search-form {
     position: absolute;
     top: 99%;
