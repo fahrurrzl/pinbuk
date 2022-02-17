@@ -372,6 +372,7 @@ section {
 .header .profil-container .profil-wrapper .profil .profil-name p {
   font-size: 0.8rem;
   text-transform: none;
+  margin-top: -0.5rem;
 }
 
 .header .profil-container .profil-wrapper .logout {
