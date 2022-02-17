@@ -43,6 +43,13 @@
           <?php endforeach; } ?>
         </div>
       </div>
+      <!-- mouse scroll animasi start -->
+    <div class="mouse-animation">
+      <div class="mouse-wrapper">
+      <i class="uil uil-angle-down"></i>
+      </div>
+    </div>
+    <!-- mouse scroll animasi end -->
     </section>
     <!-- home end -->
 

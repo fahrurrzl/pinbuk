@@ -423,6 +423,7 @@ p {
 }
 
 .home {
+  position: relative;
   min-height: 100vh;
   display: flex;
   justify-content: space-between;
@@ -510,6 +511,44 @@ p {
         }
       }
     }
+  }
+
+  .mouse-animation {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    .mouse-wrapper {
+      width: 1.5rem;
+      height: 2.5rem;
+      border-radius: 1rem;
+      padding: 0.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $white;
+      i {
+        font-size: 1.3rem;
+        color: $white;
+        animation: mouseScroll 2s linear infinite;
+      }
+    }
+  }
+}
+
+@keyframes mouseScroll {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(50%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%);
+    opacity: 0;
   }
 }
 

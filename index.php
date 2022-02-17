@@ -77,9 +77,9 @@ if(isset($_POST['cari'])){
       <a href="" class="logo"><i class="uil uil-book-open"></i></a>
 
       <nav class="navbar">
-        <a href="?page=home">home</a>
-        <a href="?page=home#books">books</a>
-        <a href="?page=home#about">about</a>
+        <a href="?page=home">beranda</a>
+        <a href="?page=home#books">buku</a>
+        <a href="?page=home#about">tentang</a>
         <?php if(isset($_SESSION['login'])) : ?>
         <a href="?page=dipinjam">dipinjam</a>
         <a href="?page=riwayat">riwayat pinjam</a>
@@ -170,11 +170,12 @@ if(isset($_POST['cari'])){
       <div class="box-container">
         <div class="box">
           <h3>quick link</h3>
-          <a href="?page=home">home</a>
-          <a href="?page=home#books">books</a>
-          <a href="?page=home#about">about</a>
+          <a href="?page=home">beranda</a>
+          <a href="?page=home#books">buku</a>
+          <a href="?page=home#about">tentang</a>
           <?php if(isset($_SESSION['login'])) : ?>
-          <a href="?page=buku-saya">dipinjam</a>
+          <a href="?page=dipinjam">dipinjam</a>
+          <a href="?page=riwayat">riwayat pinjam</a>
           <?php endif; ?>
         </div>
 

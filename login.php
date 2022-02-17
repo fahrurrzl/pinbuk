@@ -191,9 +191,9 @@ if(isset($_POST['registrasi'])) {
       <div class="box-container">
         <div class="box">
           <h3>quick link</h3>
-          <a href="#home">home</a>
-          <a href="#books">books</a>
-          <a href="#about">about</a>
+          <a href="index.php?page=home">beranda</a>
+          <a href="index.php?page=home#books">buku</a>
+          <a href="index.php?page=home#about">tentang</a>
         </div>
 
         <div class="box">
