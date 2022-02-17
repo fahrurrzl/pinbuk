@@ -308,73 +308,83 @@ section {
   color: #a4a1ac;
 }
 
-.header .profil-container .profil-wrapper {
+.header .profil-container {
   position: relative;
 }
 
-.header .profil-container .profil-wrapper a i {
-  font-size: 2rem;
-  color: #dbd8e3;
+.header .profil-container i {
+  font-size: 1.9rem;
+  cursor: pointer;
 }
 
-.header .profil-container .profil-wrapper a i:hover {
+.header .profil-container i:hover {
   color: #a4a1ac;
 }
 
-.header .profil-container .profil-wrapper .profil-box {
+.header .profil-container .profil-wrapper {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+          clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   position: absolute;
-  top: 2rem;
+  top: 100%;
   right: 0;
   background: #dbd8e3;
   width: 20rem;
+  padding: 1rem 0.5rem;
   border-radius: 0.5rem;
-  padding: 0.6rem 1rem;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-          clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 }
 
-.header .profil-container .profil-wrapper .profil-box li {
-  display: block;
-  float: left;
-  margin: 0.5rem;
-  height: 5rem;
-  margin-top: 0.5rem;
+.header .profil-container .profil-wrapper .profil {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.header .profil-container .profil-wrapper .profil-box li img {
-  margin-right: 0.3rem;
+.header .profil-container .profil-wrapper .profil .profil-img img {
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
-.header .profil-container .profil-wrapper .profil-box li .logout {
-  padding-top: 3.5rem;
-}
-
-.header .profil-container .profil-wrapper .profil-box li .logout i {
-  font-size: 1rem;
+.header .profil-container .profil-wrapper .profil .profil-name h3,
+.header .profil-container .profil-wrapper .profil .profil-name p {
   color: #2a2438;
 }
 
-.header .profil-container .profil-wrapper .profil-box li .logout:hover i {
-  color: #a4a1ac;
+.header .profil-container .profil-wrapper .profil .profil-name p {
+  font-size: 0.8rem;
+  text-transform: none;
 }
 
-.header .profil-container .profil-wrapper .profil-box li a {
-  padding-top: 0.7rem;
+.header .profil-container .profil-wrapper .logout {
+  position: absolute;
+  bottom: 10%;
+  right: 1%;
+  width: 50%;
   color: #2a2438;
+}
+
+.header .profil-container .profil-wrapper .logout a,
+.header .profil-container .profil-wrapper .logout i {
   font-weight: bold;
-  display: block;
+  color: #2a2438;
 }
 
-.header .profil-container .profil-wrapper .profil-box li a:hover {
+.header .profil-container .profil-wrapper .logout i {
+  font-size: 1rem;
+}
+
+.header .profil-container .profil-wrapper .logout:hover,
+.header .profil-container .profil-wrapper .logout:hover i {
   color: #a4a1ac;
 }
 
-.header .profil-container:hover .profil-box {
+.header .profil-container:hover .profil-wrapper {
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
           clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }

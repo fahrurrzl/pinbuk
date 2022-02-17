@@ -300,63 +300,129 @@ section {
   }
 
   .profil-container {
-    .profil-wrapper {
-      position: relative;
-      a i {
-        font-size: 2rem;
-        color: $white;
-        &:hover {
-          color: $darkWhite;
-        }
+    position: relative;
+    i {
+      font-size: 1.9rem;
+      cursor: pointer;
+      &:hover {
+        color: $darkWhite;
       }
-      .profil-box {
-        position: absolute;
-        top: 2rem;
-        right: 0;
-        background: $white;
-        width: 20rem;
-        border-radius: 0.5rem;
-        padding: 0.6rem 1rem;
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        li {
-          display: block;
-          float: left;
-          margin: 0.5rem;
-          height: 5rem;
-          margin-top: 0.5rem;
+    }
+    .profil-wrapper {
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: $white;
+      width: 20rem;
+      padding: 1rem 0.5rem;
+      border-radius: 0.5rem;
+      .profil {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        .profil-img {
           img {
-            margin-right: 0.3rem;
+            object-fit: cover;
             width: 3rem;
             height: 3rem;
             border-radius: 50%;
-            object-fit: cover;
           }
-          .logout {
-            padding-top: 3.5rem;
-            i {
-              font-size: 1rem;
-              color: $black;
-            }
-            &:hover i {
-              color: $darkWhite;
-            }
-          }
-          a {
-            padding-top: 0.7rem;
+        }
+        .profil-name {
+          h3,
+          p {
             color: $black;
-            font-weight: bold;
-            display: block;
-            &:hover {
-              color: $darkWhite;
-            }
+          }
+          p {
+            font-size: 0.8rem;
+            text-transform: none;
           }
         }
       }
+      .logout {
+        position: absolute;
+        bottom: 10%;
+        right: 1%;
+        width: 50%;
+        color: $black;
+        a,
+        i {
+          font-weight: bold;
+          color: $black;
+        }
+        i {
+          font-size: 1rem;
+        }
+        &:hover,
+        &:hover i {
+          color: $darkWhite;
+        }
+      }
     }
-    &:hover .profil-box {
+    &:hover .profil-wrapper {
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
   }
+
+  // .profil-container {
+  //   .profil-wrapper {
+  //     position: relative;
+  //     a i {
+  //       font-size: 2rem;
+  //       color: $white;
+  //       &:hover {
+  //         color: $darkWhite;
+  //       }
+  //     }
+  //     .profil-box {
+  //       position: absolute;
+  //       top: 2rem;
+  //       right: 0;
+  //       background: $white;
+  //       width: 20rem;
+  //       border-radius: 0.5rem;
+  //       padding: 0.6rem 1rem;
+  //       clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  //       li {
+  //         display: block;
+  //         float: left;
+  //         margin: 0.5rem;
+  //         height: 5rem;
+  //         margin-top: 0.5rem;
+  //         img {
+  //           margin-right: 0.3rem;
+  //           width: 3rem;
+  //           height: 3rem;
+  //           border-radius: 50%;
+  //           object-fit: cover;
+  //         }
+  //         .logout {
+  //           padding-top: 3.5rem;
+  //           i {
+  //             font-size: 1rem;
+  //             color: $black;
+  //           }
+  //           &:hover i {
+  //             color: $darkWhite;
+  //           }
+  //         }
+  //         a {
+  //           padding-top: 0.7rem;
+  //           color: $black;
+  //           font-weight: bold;
+  //           display: block;
+  //           &:hover {
+  //             color: $darkWhite;
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  //   &:hover .profil-box {
+  //     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  //   }
+  // }
   .search-form {
     position: absolute;
     top: 99%;

@@ -102,22 +102,27 @@ if(isset($_POST['cari'])){
       </form>
 
       <?php if(isset($_SESSION['login'])) { ?>
-      <ul class="profil-container">
-        <li class="profil-wrapper">
-          <a href="#" class="profil"><i class="uil uil-user-circle"></i> </a>
-          <ul class="profil-box">
-            <?php if(isset($_SESSION['login'])) { ?>
-              <li><img src="img/<?= $row['poto']; ?>" alt=""></li>
-            <li>
-              <a href="?page=detail-profil&id_peminjam=<?= $id_peminjam; ?>">
-              <?= $row['nama_peminjam']; ?></a></li>
-            <li><a class="logout" href="logout.php">log out <i class="uil uil-signout"></i></a></li>
+      <div class="profil-container">
+        <i class="uil uil-user-circle"></i>
+        <div class="profil-wrapper">
+        <?php if(isset($_SESSION['login'])) { ?>
+          <div class="profil">
+            <div class="profil-img">
+              <img src="img/<?= $row['poto']; ?>" alt="" />
+            </div>
+            <div class="profil-name">
+              <h3><?= $row['nama_peminjam']; ?></h3>
+              <p><?= $row['email']; ?></p>
+            </div>
+          </div>
+          <div class="logout">
+            <a class="logout" href="logout.php">log out <i class="uil uil-signout"></i></a>
+            </div>
             <?php } else {
               echo "<li><a href='login.php'>login</a></li>";
             } ?>
-          </ul>
-        </li>
-      </ul>
+        </div>
+      </div>
       <?php } else {
         echo "<a href='login.php' class='btn'>login / registrasi</a>";
       } ?>
