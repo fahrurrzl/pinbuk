@@ -143,6 +143,7 @@ input:disabled {
       justify-content: space-around;
   cursor: pointer;
   display: none;
+  margin-left: auto;
 }
 
 .btn-menu span {
