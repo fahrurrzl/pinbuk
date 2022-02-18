@@ -250,7 +250,7 @@ section {
   display: flex;
   align-items: center;
   padding: 1.2rem 5%;
-  z-index: 999;
+  z-index: 9999;
 
   .logo {
     font-family: "Syne Tactile", cursive;
@@ -1255,10 +1255,8 @@ footer {
       right: 0;
       height: 100vh;
       border-top: $border;
-      backdrop-filter: blur(1rem);
-      -webkit-backdrop-filter: blur(1rem);
       color: $white;
-      background: rgba($color: $lightBlack, $alpha: 0.7);
+      background: $black;
       clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
       &.active {
         clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
@@ -1271,6 +1269,9 @@ footer {
           display: none;
         }
       }
+    }
+    .profil-container {
+      margin-right: 1rem;
     }
   }
 
@@ -1305,26 +1306,6 @@ footer {
     .content {
       width: 100%;
       margin-bottom: 2rem;
-    }
-  }
-  .modal {
-    .modal-box {
-      width: 30rem;
-      height: 30rem;
-      .modal-content {
-        .img {
-          width: 50%;
-        }
-        .content {
-          h3 {
-            font-size: 4.3rem;
-            margin-bottom: 0.5rem;
-          }
-          p {
-            margin-bottom: 0.5rem;
-          }
-        }
-      }
     }
   }
 

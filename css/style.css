@@ -249,7 +249,7 @@ section {
       -ms-flex-align: center;
           align-items: center;
   padding: 1.2rem 5%;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .header .logo {
@@ -1610,10 +1610,8 @@ footer .copyright a:hover {
     right: 0;
     height: 100vh;
     border-top: 2px solid #dbd8e3;
-    backdrop-filter: blur(1rem);
-    -webkit-backdrop-filter: blur(1rem);
     color: #dbd8e3;
-    background: rgba(53, 47, 68, 0.7);
+    background: #2a2438;
     -webkit-clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
             clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
   }
@@ -1628,6 +1626,9 @@ footer .copyright a:hover {
   }
   .header .navbar a:hover::after {
     display: none;
+  }
+  .header .profil-container {
+    margin-right: 1rem;
   }
   .swiper img {
     width: 60%;
@@ -1653,20 +1654,6 @@ footer .copyright a:hover {
   .home .content {
     width: 100%;
     margin-bottom: 2rem;
-  }
-  .modal .modal-box {
-    width: 30rem;
-    height: 30rem;
-  }
-  .modal .modal-box .modal-content .img {
-    width: 50%;
-  }
-  .modal .modal-box .modal-content .content h3 {
-    font-size: 4.3rem;
-    margin-bottom: 0.5rem;
-  }
-  .modal .modal-box .modal-content .content p {
-    margin-bottom: 0.5rem;
   }
   .form-container {
     -webkit-box-orient: vertical;

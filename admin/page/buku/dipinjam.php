@@ -15,7 +15,6 @@ ORDER BY id_detail DESC");
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Data Buku</h1>
-<a href="?page=buku&aksi=tambah" class="btn btn-primary mb-3">Tambah Buku</a>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
@@ -33,6 +32,7 @@ ORDER BY id_detail DESC");
             <th>ISBN</th>
             <th>Kategori</th>
             <th>Peminjam</th>
+            <th>status</th>
           </tr>
         </thead>
         <tfoot>
@@ -44,6 +44,7 @@ ORDER BY id_detail DESC");
             <th>ISBN</th>
             <th>Kategori</th>
             <th>Peminjam</th>
+            <th>status</th>
           </tr>
         </tfoot>
         <tbody>
@@ -59,6 +60,7 @@ ORDER BY id_detail DESC");
             <td><?= $b['isbn']; ?></td>
             <td><?= $b['nama_kategori']; ?></td>
             <td><?= $b['nama_peminjam']; ?></td>
+            <td><?= $b['status']; ?></td>
           </tr>
           <?php endforeach; } ?>
         </tbody>

@@ -11,7 +11,7 @@ require 'functions/functions.php';
 @$buku_terbaru = query("SELECT * FROM buku
 INNER JOIN pengarang ON buku.id_pengarang = pengarang.id_pengarang
 INNER JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit
-ORDER BY id_buku DESC LIMIT 4");
+ORDER BY id_buku DESC LIMIT 5");
 
 // menampilkan semua buku
 @$buku = query("SELECT * FROM buku
@@ -74,7 +74,7 @@ if(isset($_POST['cari'])){
   <body>
     <!-- header start -->
     <header class="header">
-      <a href="" class="logo"><i class="uil uil-book-open"></i></a>
+      <a href="?page=home" class="logo"><i class="uil uil-book-open"></i></a>
 
       <nav class="navbar">
         <a href="?page=home">beranda</a>

@@ -18,8 +18,8 @@ $jumlah_peminjam = query("SELECT * FROM peminjam");
 $jumlah_peminjam = count($jumlah_peminjam);
 
 // jumlah buku yang dipinjam
-$jumlah_dipinjam = query("SELECT * FROM detail_peminjam");
-$jumlah_dipinjam = count($jumlah_dipinjam);
+@$jumlah_dipinjam = query("SELECT * FROM detail_peminjam WHERE status = 'pinjam'");
+@$jumlah_dipinjam = count($jumlah_dipinjam);
 
 
 ?>
