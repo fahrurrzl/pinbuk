@@ -1639,6 +1639,9 @@ footer .copyright a:hover {
         -ms-flex-order: 2;
             order: 2;
   }
+  .login-reg {
+    margin-right: 1rem;
+  }
 }
 
 @media (max-width: 450px) {

@@ -125,7 +125,7 @@ if(isset($_POST['cari'])){
         </div>
       </div>
       <?php } else {
-        echo "<a href='login.php' class='btn'>login / registrasi</a>";
+        echo "<a href='login.php' class='btn login-reg'>login / registrasi</a>";
       } ?>
     </header>
     <!-- header end -->
