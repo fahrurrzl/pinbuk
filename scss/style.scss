@@ -1281,6 +1281,13 @@ footer {
     .login-reg {
       margin-right: -63%;
     }
+
+    .profil-container {
+      margin-right: -80%;
+      .profil-wrapper {
+        right: -100%;
+      }
+    }
   }
 
   .swiper img {
@@ -1349,6 +1356,13 @@ footer {
   .header {
     .login-reg {
       margin-right: -30%;
+    }
+
+    .profil-container {
+      margin-right: -60%;
+      .profil-wrapper {
+        right: -100%;
+      }
     }
   }
 }

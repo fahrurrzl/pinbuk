@@ -1638,6 +1638,12 @@ footer .copyright a:hover {
   .header .login-reg {
     margin-right: -63%;
   }
+  .header .profil-container {
+    margin-right: -80%;
+  }
+  .header .profil-container .profil-wrapper {
+    right: -100%;
+  }
   .swiper img {
     width: 60%;
   }
@@ -1692,6 +1698,12 @@ footer .copyright a:hover {
 @media (max-width: 395px) {
   .header .login-reg {
     margin-right: -30%;
+  }
+  .header .profil-container {
+    margin-right: -60%;
+  }
+  .header .profil-container .profil-wrapper {
+    right: -100%;
   }
 }
 /*# sourceMappingURL=style.css.map */
