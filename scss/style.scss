@@ -1274,6 +1274,10 @@ footer {
     .profil-container {
       margin-right: 1rem;
     }
+
+    .login-reg {
+      margin-right: -63%;
+    }
   }
 
   .swiper img {
@@ -1283,10 +1287,6 @@ footer {
   .btn-menu {
     display: inherit;
     order: 2;
-  }
-
-  .login-reg {
-    margin-right: 1rem;
   }
 }
 
@@ -1300,6 +1300,10 @@ footer {
       a {
         margin: 0 0.5rem;
       }
+    }
+
+    .login-reg {
+      margin-right: -40%;
     }
   }
 
@@ -1335,6 +1339,14 @@ footer {
       .profil-box {
         left: -800%;
       }
+    }
+  }
+}
+
+@media (max-width: 395px) {
+  .header {
+    .login-reg {
+      margin-right: -30%;
     }
   }
 }

@@ -1631,6 +1631,9 @@ footer .copyright a:hover {
   .header .profil-container {
     margin-right: 1rem;
   }
+  .header .login-reg {
+    margin-right: -63%;
+  }
   .swiper img {
     width: 60%;
   }
@@ -1640,9 +1643,6 @@ footer .copyright a:hover {
         -ms-flex-order: 2;
             order: 2;
   }
-  .login-reg {
-    margin-right: 1rem;
-  }
 }
 
 @media (max-width: 450px) {
@@ -1651,6 +1651,9 @@ footer .copyright a:hover {
   }
   .header .navbar a {
     margin: 0 0.5rem;
+  }
+  .header .login-reg {
+    margin-right: -40%;
   }
   section {
     padding-top: 19%;
@@ -1676,6 +1679,12 @@ footer .copyright a:hover {
   }
   .profil-container .profil-wrapper .profil-box {
     left: -800%;
+  }
+}
+
+@media (max-width: 395px) {
+  .header .login-reg {
+    margin-right: -30%;
   }
 }
 /*# sourceMappingURL=style.css.map */
