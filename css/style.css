@@ -1349,6 +1349,10 @@ footer .copyright a:hover {
      object-fit: cover;
 }
 
+.detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-left button {
+  margin-bottom: 1rem;
+}
+
 .detail-profil .detail-profil-container .detail-profil-wrapper .detail-profil-right {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 30rem;
@@ -1655,6 +1659,12 @@ footer .copyright a:hover {
   .header .login-reg {
     margin-right: -40%;
   }
+  .header .profil-container {
+    margin-right: -65%;
+  }
+  .header .profil-container .profil-wrapper {
+    right: -100%;
+  }
   section {
     padding-top: 19%;
   }
@@ -1676,9 +1686,6 @@ footer .copyright a:hover {
   }
   .books {
     min-height: 55vh;
-  }
-  .profil-container .profil-wrapper .profil-box {
-    left: -800%;
   }
 }
 

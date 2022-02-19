@@ -1045,6 +1045,9 @@ footer {
             object-fit: cover;
           }
         }
+        button {
+          margin-bottom: 1rem;
+        }
       }
       .detail-profil-right {
         flex: 1 1 30rem;
@@ -1305,6 +1308,13 @@ footer {
     .login-reg {
       margin-right: -40%;
     }
+
+    .profil-container {
+      margin-right: -65%;
+      .profil-wrapper {
+        right: -100%;
+      }
+    }
   }
 
   section {
@@ -1332,14 +1342,6 @@ footer {
 
   .books {
     min-height: 55vh;
-  }
-
-  .profil-container {
-    .profil-wrapper {
-      .profil-box {
-        left: -800%;
-      }
-    }
   }
 }
 
